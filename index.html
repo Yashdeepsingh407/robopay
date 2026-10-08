@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RoboPay – Payments for Robots and AI Agents</title>
+<meta name="description" content="RoboPay is the payment layer for machines and AI agents. A delivery robot arrives, a Solana escrow releases, the owner is paid. Real hardware, HTW Berlin.">
+<meta name="keywords" content="robot payments, machine payments, M2M payments, AI agent payments, DePIN payments, Solana escrow, delivery robot, peaq, Staex">
+<meta name="author" content="RoboPay, Machine Economy Lab, HTW Berlin">
+<meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#04060b">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RoboPay">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://robo-pay.xyz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RoboPay">
+<meta property="og:title" content="RoboPay – Payments for Robots and AI Agents">
+<meta property="og:description" content="RoboPay is the payment layer for machines and AI agents. A delivery robot arrives, a Solana escrow releases, the owner is paid. Real hardware, HTW Berlin.">
+<meta property="og:url" content="https://robo-pay.xyz/">
+<meta property="og:image" content="https://robo-pay.xyz/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A RoboPay delivery car with a milk carton drives along a glowing route at dusk">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@R0boPay">
+<meta name="twitter:title" content="RoboPay – Payments for Robots and AI Agents">
+<meta name="twitter:description" content="RoboPay is the payment layer for machines and AI agents. A delivery robot arrives, a Solana escrow releases, the owner is paid. Real hardware, HTW Berlin.">
+<meta name="twitter:image" content="https://robo-pay.xyz/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2304060b' stroke='%2346e3ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%237c5cff'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://robo-pay.xyz/#org",
+  "name": "RoboPay",
+  "url": "https://robo-pay.xyz/",
+  "logo": "https://robo-pay.xyz/assets/og.jpg",
+  "description": "RoboPay is the payment layer for machines and AI agents. A delivery robot arrives, a Solana escrow releases, the owner is paid. Real hardware, HTW Berlin.",
+  "parentOrganization": {
+   "@type": "Organization",
+   "name": "Machine Economy Lab, HTW Berlin"
+  },
+  "sameAs": [
+   "https://x.com/R0boPay",
+   "https://github.com/kevkaseeker-source/robopay",
+   "https://t.me/KevkaAkvek",
+   "https://www.youtube.com/watch?v=P73MK2Du2Nw"
+  ],
+  "member": [
+   {
+    "@type": "Person",
+    "name": "Kevin Ehrentraut",
+    "jobTitle": "Founder and Technical Lead"
+   },
+   {
+    "@type": "Person",
+    "name": "Xinyan Liu",
+    "jobTitle": "Hardware and Mechatronics"
+   },
+   {
+    "@type": "Person",
+    "name": "Yashdeep Singh",
+    "jobTitle": "Business and Market Research",
+    "url": "https://yashdeepsingh.com",
+    "sameAs": [
+     "https://yashdeepsingh.com"
+    ]
+   },
+   {
+    "@type": "Person",
+    "name": "Prof. Dr. Alexandra Mikityuk",
+    "jobTitle": "Supervisor"
+   }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://robo-pay.xyz/#site",
+  "url": "https://robo-pay.xyz/",
+  "name": "RoboPay",
+  "description": "RoboPay is the payment layer for machines and AI agents. A delivery robot arrives, a Solana escrow releases, the owner is paid. Real hardware, HTW Berlin.",
+  "inLanguage": "en",
+  "publisher": {
+   "@id": "https://robo-pay.xyz/#org"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "RoboPay demo: a delivery car gets paid",
+  "description": "A delivery car drives to a box, scans the QR code, signs the delivery on Solana and the escrow pays the owner.",
+  "thumbnailUrl": "https://robo-pay.xyz/assets/poster.jpg",
+  "contentUrl": "https://robo-pay.xyz/assets/demo.mp4",
+  "uploadDate": "2026-10-07",
+  "duration": "PT1M29S"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "What is RoboPay?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "RoboPay is the payment layer for machines and AI agents in the physical world. A machine gets paid automatically when it proves it did the job, for example when a delivery car arrives."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does a delivery robot get paid?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The buyer locks 0.2 SOL in an escrow on Solana. The car drives to the box and scans its QR code. It then signs the delivery on-chain, and the escrow releases the money to the car’s owner."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Why can’t robots use banks or cards?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "A robot has no bank account, cards are made for people, and a payment alone is not proof that the parcel arrived. RoboPay ties the payment to proof of delivery."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does RoboPay prove a delivery?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Two layers. The QR handover works on the car today. A letterbox co-signature with a weight sensor is the planned next step and closes the gap of relayed codes. Our research also tests GPS arrival detection as a trigger."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Which technology does RoboPay use?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Solana for escrow payments, peaq for the car’s verifiable Machine-NFT identity, and Staex for secure connectivity."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is RoboPay live?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It runs on real hardware as a working prototype: a PiCar-X delivery car and a letterbox prototype. Payouts that follow the Machine-NFT owner are built and in testing."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Who builds RoboPay?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kevin Ehrentraut, Xinyan Liu and Yashdeep Singh at the Machine Economy Lab, HTW Berlin, supervised by Prof. Dr. Alexandra Mikityuk."
+    }
+   }
+  ]
+ }
+]
+</script>
+<link rel="stylesheet" href="style.css?v=20">
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="RoboPay home">
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#g1)" stroke-width="2"/>
+      <circle cx="20" cy="20" r="11" fill="none" stroke="#46e3ff" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 4"/>
+      <circle cx="20" cy="20" r="4.5" fill="url(#g1)"/>
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46e3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+    </svg>
+    <span>RoboPay</span>
+  </a>
+  <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks" aria-label="Sections">
+    <a href="#story">How it works</a>
+    <a href="#proof">Proof</a>
+    <a href="#research">Research</a>
+    <a href="#market">Market</a>
+    <a href="#team">Team</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-sm nav-cta" href="#film">Watch the demo</a>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <h1 class="hero-title" aria-label="Nobody clicked pay. RoboPay: payments for robots and AI agents.">
+      <span class="line"><span data-hero>Nobody</span></span>
+      <span class="line"><span data-hero>clicked <em>pay.</em></span></span>
+    </h1>
+    <p class="hero-sub" data-hero>
+      A delivery car drives through the city. When it arrives, money moves.
+      RoboPay is the payment layer for machines and AI agents in the physical world.
+    </p>
+    <div class="hero-cta" data-hero>
+      <a class="btn" href="#story">See how a delivery pays</a>
+      <a class="btn btn-ghost" href="#film">Watch the demo</a>
+    </div>
+    <p class="hero-event" data-hero>Built for the Colosseum Crypto World’s Fair, DePIN track. <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener">Code on GitHub</a>.</p>
+  </div>
+  <div class="hero-status" id="heroStatus" aria-hidden="true">
+    <span class="chip" data-s="locked">Locked</span>
+    <span class="chip" data-s="moving">In motion</span>
+    <span class="chip" data-s="done">Delivered</span>
+  </div>
+  <a class="scroll-hint" href="#story" aria-label="Scroll down"><i></i></a>
+</section>
+
+<!-- ============ STORY (pinned, scroll-driven) ============ -->
+<section class="story" id="story">
+  <div class="story-pin">
+    <div class="story-text">
+      <h2 class="story-h">Paid only when the car proves delivery.</h2>
+      <ol class="steps" id="steps">
+        <li data-step="0">
+          <h3>The buyer locks 0.2 SOL</h3>
+          <p>The money goes into an escrow on Solana. Nobody can touch it yet. <code>create_delivery()</code></p>
+        </li>
+        <li data-step="1">
+          <h3>The car drives</h3>
+          <p>Our PiCar-X leaves with the parcel. The payment waits while it moves.</p>
+        </li>
+        <li data-step="2">
+          <h3>It scans the box</h3>
+          <p>The car’s camera reads the QR code on the box. No code, no payout.</p>
+        </li>
+        <li data-step="3">
+          <h3>The confirmation is signed</h3>
+          <p>The car signs the delivery on-chain. Anyone can check it in the Solana Explorer. <code>confirm_delivery()</code></p>
+        </li>
+        <li data-step="4">
+          <h3>The owner gets paid</h3>
+          <p>The escrow releases the 0.2 SOL to the car’s owner, found through its peaq Machine-NFT. <code>close_escrow()</code></p>
+        </li>
+      </ol>
+      <div class="story-status" id="storyStatus">
+        <span class="chip" data-s="locked">Locked</span>
+        <span class="chip" data-s="moving">In motion</span>
+        <span class="chip" data-s="done">Delivered</span>
+      </div>
+    </div>
+
+    <div class="story-stage">
+      <svg id="scene" viewBox="0 0 1000 620" role="img" aria-label="Animation: buyer locks money in escrow, the car drives to the box, scans the QR code, signs the delivery, and the owner is paid.">
+        <defs>
+          <linearGradient id="road" x1="0" x2="1"><stop offset="0" stop-color="#46e3ff" stop-opacity=".1"/><stop offset=".5" stop-color="#46e3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient>
+          <linearGradient id="solana" x1="0" x2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#14f195"/></linearGradient>
+          <radialGradient id="glow"><stop offset="0" stop-color="#46e3ff" stop-opacity=".5"/><stop offset="1" stop-color="#46e3ff" stop-opacity="0"/></radialGradient>
+          <linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#14f195" stop-opacity=".7"/><stop offset="1" stop-color="#14f195" stop-opacity="0"/></linearGradient>
+          <filter id="blur"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+
+        <!-- skyline -->
+        <path class="sky" d="M0 560 V470 h40 v-60 h50 v90 h30 v-120 h60 v70 h40 v-40 h50 v100 h40 v-80 h60 v60 h50 v-110 h40 v80 h60 v-50 h60 v90 h40 v-70 h50 v60 h60 v-100 h50 v90 h40 V560 Z"/>
+
+        <!-- links -->
+        <path id="linkA" class="link" d="M150 130 C 260 40, 380 50, 452 92"/>
+        <path id="linkB" class="link" d="M548 92 C 640 50, 760 40, 850 130"/>
+
+        <!-- buyer -->
+        <g transform="translate(110 150)">
+          <circle r="42" class="node"/>
+          <circle r="13" cy="-8" class="ico"/><path d="M-22 22 a22 18 0 0 1 44 0" class="ico" fill="none"/>
+          <text y="74" class="lbl">Buyer wallet</text>
+        </g>
+        <!-- escrow -->
+        <g transform="translate(500 110)" id="escrow">
+          <circle r="70" fill="url(#glow)" class="escrow-glow" opacity="0"/>
+          <path d="M0 -52 L45 -26 V26 L0 52 L-45 26 V-26 Z" class="node hex" id="hex"/>
+          <rect x="-13" y="-6" width="26" height="20" rx="4" class="ico-fill"/>
+          <path d="M-8 -6 v-7 a8 8 0 0 1 16 0 v7" class="ico" fill="none" id="shackle"/>
+          <text y="84" class="lbl">Escrow on Solana</text>
+          <text y="104" class="amt" id="amt">0.2 SOL</text>
+        </g>
+        <!-- owner -->
+        <g transform="translate(890 150)">
+          <circle r="42" class="node"/>
+          <path d="M-22 -4 h44 v26 h-44 z M-22 -4 l6 -14 h32 l6 14" class="ico" fill="none"/><circle cx="12" cy="9" r="3.5" class="ico-fill"/>
+          <text y="74" class="lbl">Owner wallet</text>
+        </g>
+
+        <!-- road -->
+        <path id="route" class="route-bg" d="M90 520 C 300 430, 520 610, 870 480"/>
+        <path id="routeLit" class="route-lit" d="M90 520 C 300 430, 520 610, 870 480"/>
+
+        <!-- warehouse + house -->
+        <g transform="translate(60 520)"><path d="M-24 14 v-30 l24 -16 l24 16 v30 z" class="node thin"/><text y="40" class="lbl sm">Sender</text></g>
+        <g transform="translate(895 476)">
+          <path d="M-26 14 v-34 l26 -18 l26 18 v34 z" class="node thin"/>
+          <g id="qrbox" transform="translate(-9 -8)">
+            <rect width="18" height="18" rx="2" class="qr-bg"/>
+            <path class="qr" d="M3 3h5v5H3zM10 3h5v2h-3v3h-2zM3 10h2v2h3v3H3zM10 10h5v5h-3v-2h-2z"/>
+          </g>
+          <text y="40" class="lbl sm">Box with QR code</text>
+        </g>
+
+        <!-- scan beam -->
+        <polygon id="beamShape" points="0,0 120,-38 120,38" fill="url(#beam)" opacity="0"/>
+
+        <!-- car -->
+        <g id="car">
+          <ellipse cx="0" cy="12" rx="26" ry="5" fill="#46e3ff" opacity=".25" filter="url(#blur)"/>
+          <rect x="-24" y="-8" width="48" height="16" rx="6" class="car-body"/>
+          <path d="M-10 -8 l5 -9 h13 l5 9 z" class="car-cab"/>
+          <circle cx="-14" cy="9" r="5.5" class="wheel"/><circle cx="14" cy="9" r="5.5" class="wheel"/>
+          <circle cx="23" cy="-1" r="2.6" fill="#fff"/>
+        </g>
+
+        <!-- coins -->
+        <g id="coins">
+          <circle class="coin" r="8"/><circle class="coin" r="8"/><circle class="coin" r="8"/>
+        </g>
+
+        <!-- signature -->
+        <g transform="translate(500 590)">
+          <text id="sig" class="sig" text-anchor="middle"></text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <h2 class="big">Machines cannot pay for themselves.</h2>
+    <ul class="pr-list">
+      <li>
+        <svg class="pr-ico" viewBox="0 0 80 80" aria-hidden="true"><path d="M10 32 L40 12 L70 32 Z M16 36 v22 M32 36 v22 M48 36 v22 M64 36 v22 M8 62 h64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path class="x" d="M10 70 L70 10" stroke="#ff5d73" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3>No bank account</h3>
+        <p>A robot cannot open one. It has no passport, no address and no signature.</p>
+      </li>
+      <li>
+        <svg class="pr-ico" viewBox="0 0 80 80" aria-hidden="true"><rect x="8" y="18" width="64" height="44" rx="7" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 32 h64" stroke="currentColor" stroke-width="3"/><path d="M16 50 h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="x" d="M10 70 L70 10" stroke="#ff5d73" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3>Cards fit people, not robots</h3>
+        <p>Cards need a person to hold them, approve them and dispute them.</p>
+      </li>
+      <li>
+        <svg class="pr-ico" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 h40 v60 l-8 -6 l-6 6 l-6 -6 l-6 6 l-6 -6 l-8 6 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M28 28 h24 M28 40 h24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="x" d="M10 70 L70 10" stroke="#ff5d73" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3>Payment is not proof</h3>
+        <p>Money moving says nothing about whether the parcel arrived.</p>
+      </li>
+    </ul>
+    <p class="problem-end">Money and the real world do not talk to each other. RoboPay makes them.</p>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section class="proof" id="proof">
+  <div class="wrap proof-grid">
+    <div class="proof-copy">
+      <h2 class="big sm">Two layers of proof.</h2>
+      <p class="lead">One code is not enough. So the payout depends on two checks, and the second one closes the gap the first one leaves open.</p>
+    </div>
+    <div class="layers" id="layers" tabindex="0" aria-label="Two proof layers. Press to lift the top layer.">
+      <article class="layer l2">
+        <span class="tag planned">Planned, next step</span>
+        <h3>Letterbox co-signature</h3>
+        <dl>
+          <dt>Proves</dt><dd>The car signs the letterbox’s one-time code. A weight sensor confirms the parcel, and the letterbox co-signs.</dd>
+          <dt>Can’t stop</dt><dd>A code relayed from far away.</dd>
+        </dl>
+      </article>
+      <article class="layer l1">
+        <span class="tag live">Working on the car today</span>
+        <h3>QR handover</h3>
+        <dl>
+          <dt>Proves</dt><dd>The car read the code on the box.</dd>
+          <dt>Can’t stop</dt><dd>A copied code. Today it never changes.</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="stack" id="stack">
+  <div class="wrap">
+    <h2 class="big sm">Connected. Identified. Paid.</h2>
+    <div class="stack-rows">
+      <div class="srow">
+        <div class="logo-chip light"><img src="assets/logo-a.png" alt="Staex logo" width="108" height="34"></div>
+        <div><h3>Connectivity</h3><p>Staex keeps the robot securely connected.</p></div>
+      </div>
+      <div class="srow">
+        <div class="logo-chip"><img src="assets/logo-b.png" alt="peaq logo" width="104" height="30"></div>
+        <div><h3>Identity</h3><p>peaq gives every car a verifiable identity, its Machine-NFT. That is how RoboPay finds the owner to pay.</p></div>
+      </div>
+      <div class="srow">
+        <div class="logo-chip sol"><span>Solana</span></div>
+        <div><h3>Payments</h3><p>An escrow program with three calls: <code>create_delivery</code>, <code>confirm_delivery</code>, <code>close_escrow</code>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section class="research" id="research">
+  <div class="wrap">
+    <h2 class="big sm">Backed by research.</h2>
+    <p class="lead">Our HTW Berlin paper asks one question: can a moving machine settle a payment on-chain the moment it arrives?</p>
+    <div class="r-grid">
+      <div class="r-figs">
+        <figure class="glass">
+          <img src="assets/fig-prototype.jpg" alt="Indoor proof of concept: Raspberry Pi 4 with 4G module and GPS next to a phone showing the Drone Delivery app" width="900" height="627" loading="lazy">
+          <figcaption>Indoor proof of concept. A Raspberry Pi with a 4G SIM signs the payout.</figcaption>
+        </figure>
+        <figure class="glass">
+          <img src="assets/fig-redesign.jpg" alt="Redesigned hardware: Raspberry Pi 4 with SIM7600 4G and GPS HAT, external GPS antenna and 4G antenna" width="900" height="503" loading="lazy">
+          <figcaption>The redesign. GPS now comes from the 4G module.</figcaption>
+        </figure>
+      </div>
+      <div class="r-stats">
+        <div class="stat glass"><b>8 s</b><p>From delivery trigger to a confirmed Solana transaction. One indoor run, target 15 s.</p></div>
+        <div class="stat glass"><b>30+</b><p>Outdoor GPS test runs planned to prove it.</p></div>
+        <div class="stat glass"><b>3</b><p>Nodes in the next design: one fixed drop point and two mobile carriers.</p></div>
+        <div class="stat glass"><b>165M</b><p>Agent payments on the x402 protocol by April 2026. Machine payments are arriving.</p></div>
+      </div>
+    </div>
+    <div class="gap glass">
+      <p><strong>The gap.</strong> No prior work combines a moving device with an on-chain payment that arrival triggers. The demo car proves delivery with a QR code. The research track tests GPS arrival.</p>
+      <ol class="steps-r">
+        <li class="done">Indoor proof of concept</li>
+        <li class="done">Hardware redesign</li>
+        <li>Outdoor GPS tests</li>
+      </ol>
+    </div>
+    <p class="fine">Working draft, September 2026. Supervised by Prof. Dr. Alexandra Mikityuk.</p>
+  </div>
+</section>
+
+<!-- ============ FILM ============ -->
+<section class="film" id="film">
+  <div class="wrap">
+    <h2 class="big sm">Watch a car get paid.</h2>
+    <div class="player" id="player">
+      <video id="demo" width="1280" height="720" preload="none" playsinline poster="assets/poster.jpg" controls controlslist="nodownload">
+        <source src="assets/demo.mp4" type="video/mp4">
+      </video>
+      <button class="play" id="playBtn" aria-label="Play the RoboPay demo film"><span></span></button>
+      <p class="vstate" id="vstate" role="status" aria-live="polite"></p>
+    </div>
+    <div class="stills">
+      <figure><img src="assets/still-prototype.jpg" width="1000" height="562" alt="The RoboPay PiCar-X prototype with its circuit boards" loading="lazy"><figcaption>PiCar-X prototype</figcaption></figure>
+      <figure><img src="assets/still-hardware.jpg" width="1000" height="562" alt="Letterbox prototype with servo lid, wiring and a weight sensor" loading="lazy"><figcaption>Letterbox prototype</figcaption></figure>
+      <figure><img src="assets/still-box.jpg" width="1000" height="562" alt="Vision: a delivery car hands a milk carton into a smart letterbox" loading="lazy"><figcaption>Where this goes</figcaption></figure>
+    </div>
+    <p class="film-link"><a href="https://www.youtube.com/watch?v=P73MK2Du2Nw" target="_blank" rel="noopener">Prefer YouTube? Open the full demo there.</a></p>
+  </div>
+</section>
+
+<!-- ============ MARKET ============ -->
+<section class="market" id="market">
+  <div class="wrap">
+    <h2 class="big sm">Machine-payment markets are growing.</h2>
+    <div class="mrows" id="mrows">
+      <div class="mrow" data-w="22">
+        <div class="mlabel"><h3>M2M / IoT payments</h3><span>2026 → 2034</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>$11.3B</b><span>→ $55B</span></div>
+      </div>
+      <div class="mrow" data-w="62">
+        <div class="mlabel"><h3>Agentic AI commerce</h3><span>2026 → 2030</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>$8B</b><span>→ $1.5T</span></div>
+      </div>
+      <div class="mrow" data-w="100">
+        <div class="mlabel"><h3>DePIN</h3><span>today → forecast</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>~$30B</b><span>→ $3.5T</span></div>
+      </div>
+    </div>
+    <p class="fine">Forecasts differ 2–5× between sources. Sources: StartUs Insights, Nevermined, bex.co (2026); RoboPay project paper §15. Bar lengths are illustrative, not to scale.</p>
+  </div>
+</section>
+
+<!-- ============ DEMAND ============ -->
+<section class="demand" id="demand">
+  <div class="wrap">
+    <h2 class="big sm">Would you accept a delivery robot?</h2>
+    <div class="rings" id="rings">
+      <div class="ring" data-v="92"><svg viewBox="0 0 120 120"><circle class="rt" cx="60" cy="60" r="52"/><circle class="rv" cx="60" cy="60" r="52" pathLength="100"/></svg><b>0%</b><p>want an instant notification</p></div>
+      <div class="ring" data-v="86"><svg viewBox="0 0 120 120"><circle class="rt" cx="60" cy="60" r="52"/><circle class="rv" cx="60" cy="60" r="52" pathLength="100"/></svg><b>0%</b><p>would pay a premium</p></div>
+      <div class="ring" data-v="71"><svg viewBox="0 0 120 120"><circle class="rt" cx="60" cy="60" r="52"/><circle class="rv" cx="60" cy="60" r="52" pathLength="100"/></svg><b>0%</b><p>say yes to a delivery robot</p></div>
+      <div class="ring warn" data-v="47"><svg viewBox="0 0 120 120"><circle class="rt" cx="60" cy="60" r="52"/><circle class="rv" cx="60" cy="60" r="52" pathLength="100"/></svg><b>0%</b><p>find blockchain as safe as their bank</p></div>
+    </div>
+    <p class="fine">38 responses · first round · mostly aged 18–24. The last number is the one we have to earn.</p>
+  </div>
+</section>
+
+<!-- ============ VISION ============ -->
+<section class="vision" id="vision">
+  <div class="wrap vision-grid">
+    <div>
+      <h2 class="big sm">Any machine that delivers can pay.</h2>
+      <p class="lead">One payment stack, every robot. Cars today. Drones, boats and humanoids next.</p>
+    </div>
+    <div class="orbit" aria-hidden="true">
+      <div class="core"><span>RoboPay<br>stack</span></div>
+      <div class="ring-o r1"></div><div class="ring-o r2"></div>
+      <div class="sat s-car"><svg viewBox="0 0 48 48"><rect x="5" y="20" width="38" height="12" rx="5"/><path d="M14 20 l4 -8 h12 l4 8"/><circle cx="14" cy="34" r="4"/><circle cx="34" cy="34" r="4"/></svg><i>Delivery cars</i></div>
+      <div class="sat s-drone"><svg viewBox="0 0 48 48"><path d="M14 14 L34 34 M34 14 L14 34"/><circle cx="12" cy="12" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="12" cy="36" r="5"/><circle cx="36" cy="36" r="5"/><rect x="19" y="19" width="10" height="10" rx="3"/></svg><i>Drones</i></div>
+      <div class="sat s-boat"><svg viewBox="0 0 48 48"><path d="M6 30 h36 l-6 10 h-24 z"/><path d="M24 8 v20 M24 10 l12 16 h-12"/></svg><i>Boats</i></div>
+      <div class="sat s-human"><svg viewBox="0 0 48 48"><circle cx="24" cy="9" r="5"/><path d="M24 15 v16 M12 20 l12 -3 l12 3 M24 31 l-8 13 M24 31 l8 13"/></svg><i>Humanoids</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team" id="team">
+  <div class="wrap">
+    <h2 class="big">A small team from HTW Berlin.</h2>
+    <p class="lead">RoboPay is built at the Machine Economy Lab, HTW Berlin, for the Colosseum Crypto World’s Fair.</p>
+    <div class="cards" id="cards">
+      <article class="card">
+        <div class="photo"><img src="assets/kevin.jpg" width="640" height="530" alt="Portrait of Kevin Ehrentraut" loading="lazy"></div>
+        <h3>Kevin Ehrentraut</h3>
+        <p class="role">Founder and Technical Lead</p>
+        <p>Car programming, Solana escrow, peaq integration.</p>
+        <p class="aff">Staex, HTW Berlin</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="assets/xinyan.jpg" width="640" height="530" alt="Portrait of Xinyan Liu" loading="lazy"></div>
+        <h3>Xinyan Liu</h3>
+        <p class="role">Hardware and Mechatronics</p>
+        <p>Smart mailbox (Unit A).</p>
+        <p class="aff">Tongji University, HTW Berlin</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="assets/yashdeep.jpg" width="640" height="530" alt="Portrait of Yashdeep Singh" loading="lazy"></div>
+        <h3>Yashdeep Singh</h3>
+        <p class="role">Business and Market Research</p>
+        <p>Car hardware assembly, market research, survey.</p>
+        <p class="aff">HTW Berlin</p>
+        <p class="web"><a href="https://yashdeepsingh.com" target="_blank" rel="noopener me">yashdeepsingh.com</a></p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="assets/alexandra.jpg" width="640" height="530" alt="Portrait of Prof. Dr. Alexandra Mikityuk" loading="lazy"></div>
+        <h3>Prof. Dr. Alexandra Mikityuk</h3>
+        <p class="role">Supervisor</p>
+        <p>HTW Berlin. CEO of Staex GmbH.</p>
+        <p class="aff">HTW Berlin, Staex</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <h2 class="big sm">Questions about RoboPay.</h2>
+    <div class="faq-list">
+      <details><summary>What is RoboPay?</summary><p>RoboPay is the payment layer for machines and AI agents in the physical world. A machine gets paid automatically when it proves it did the job, for example when a delivery car arrives.</p></details>
+      <details><summary>How does a delivery robot get paid?</summary><p>The buyer locks 0.2 SOL in an escrow on Solana. The car drives to the box and scans its QR code. It then signs the delivery on-chain, and the escrow releases the money to the car’s owner.</p></details>
+      <details><summary>Why can’t robots use banks or cards?</summary><p>A robot has no bank account, cards are made for people, and a payment alone is not proof that the parcel arrived. RoboPay ties the payment to proof of delivery.</p></details>
+      <details><summary>How does RoboPay prove a delivery?</summary><p>Two layers. The QR handover works on the car today. A letterbox co-signature with a weight sensor is the planned next step and closes the gap of relayed codes. Our research also tests GPS arrival detection as a trigger.</p></details>
+      <details><summary>Which technology does RoboPay use?</summary><p>Solana for escrow payments, peaq for the car’s verifiable Machine-NFT identity, and Staex for secure connectivity.</p></details>
+      <details><summary>Is RoboPay live?</summary><p>It runs on real hardware as a working prototype: a PiCar-X delivery car and a letterbox prototype. Payouts that follow the Machine-NFT owner are built and in testing.</p></details>
+      <details><summary>Who builds RoboPay?</summary><p>Kevin Ehrentraut, Xinyan Liu and Yashdeep Singh at the Machine Economy Lab, HTW Berlin, supervised by Prof. Dr. Alexandra Mikityuk.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT + CTA ============ -->
+<section class="next" id="next">
+  <div class="wrap">
+    <h2 class="huge">Machines will pay machines.</h2>
+    <ol class="road">
+      <li><b>Payouts follow the Machine-NFT owner</b><span>Built, in testing</span></li>
+      <li><b>Letterbox co-signature with weight sensor</b><span>Next</span></li>
+      <li><b>On-chain fee split and security hardening</b><span>Next</span></li>
+    </ol>
+    <div class="links">
+      <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener"><small>Code</small><b>github.com/kevkaseeker-source/robopay</b></a>
+      <a href="https://www.youtube.com/watch?v=P73MK2Du2Nw" target="_blank" rel="noopener"><small>Demo</small><b>youtube.com/watch?v=P73MK2Du2Nw</b></a>
+      <a href="https://t.me/KevkaAkvek" target="_blank" rel="noopener"><small>Telegram</small><b>@KevkaAkvek</b></a>
+      <a href="https://x.com/R0boPay" target="_blank" rel="noopener"><small>X</small><b>@R0boPay</b></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="dock" id="dock" aria-label="Quick actions">
+  <a class="btn" href="#film">Watch the demo</a>
+  <a class="btn btn-ghost" href="#story">How it works</a>
+</div>
+
+<footer class="foot">
+  <span>© 2026 RoboPay. Machine Economy Lab, HTW Berlin.</span>
+  <span>Built with Staex, peaq and Solana</span>
+</footer>
+
+<script src="main.js?v=16" defer></script>
+</body>
+</html>
