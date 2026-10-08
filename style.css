@@ -651,3 +651,6 @@ body::after { opacity: .5; }
 @keyframes field { to { transform: scale(1.18) translate3d(2%, 3%, 0); } }
 .glass, .story-text, .story-stage, .layer, .srow, .mrow, .ring, .faq-list details, .links a, .stat, .gap, .pr-list li, .road li, .card, .stills figure, .r-figs figure { background: rgba(255,255,255,.085); }
 body { background: transparent; }
+
+.road { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.road li:last-child span { background: rgba(10,132,255,.2); color: #8fc9ff; }
