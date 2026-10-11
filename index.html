@@ -34,6 +34,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2304060b' stroke='%2346e3ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%237c5cff'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css?v=1">
 <script type="application/ld+json">
 [
  {
@@ -167,7 +168,7 @@
  }
 ]
 </script>
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
 
@@ -459,6 +460,11 @@
       <button class="play" id="playBtn" aria-label="Play the RoboPay demo film"><span></span></button>
       <p class="vstate" id="vstate" role="status" aria-live="polite"></p>
     </div>
+    <div class="player idle yt" id="yt" data-id="ZuGwDgmI6f0">
+      <img class="thumb" src="assets/poc2-poster.jpg" alt="Thumbnail of the RoboPay proof of concept 2 video" width="1000" height="562" loading="lazy">
+      <button class="play" id="ytBtn" aria-label="Play the proof of concept 2 video"><span></span></button>
+      <p class="vcap">Proof of concept 2</p>
+    </div>
     <div class="stills">
       <figure><img src="assets/still-prototype.jpg" width="1000" height="562" alt="The RoboPay PiCar-X prototype with its circuit boards" loading="lazy"><figcaption>PiCar-X prototype</figcaption></figure>
       <figure><img src="assets/still-hardware.jpg" width="1000" height="562" alt="Letterbox prototype with servo lid, wiring and a weight sensor" loading="lazy"><figcaption>Letterbox prototype</figcaption></figure>
@@ -610,6 +616,6 @@
   <span>Built with Staex, peaq and Solana</span>
 </footer>
 
-<script src="main.js?v=16" defer></script>
+<script src="main.js?v=17" defer></script>
 </body>
 </html>

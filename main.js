@@ -353,6 +353,19 @@
   playBtn.addEventListener('click', start);
   vid.addEventListener('ended', () => { player.classList.add('idle'); vid.controls = false; vid.currentTime = 0; });
 
+  /* ---------- second film: load YouTube only on click ---------- */
+  const yt = $('#yt');
+  if (yt) $('#ytBtn').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + yt.dataset.id + '?autoplay=1&rel=0';
+    f.title = 'RoboPay proof of concept 2';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    yt.classList.remove('idle');
+    yt.appendChild(f);
+  }, { once: true });
+
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', () => { measure(); onScroll(); });
   addEventListener('load', () => { measure(); onScroll(); });
