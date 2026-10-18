@@ -13,8 +13,6 @@
 
   /* ---------- bottom action bar (thumb zone) ---------- */
   const dock = $('#dock'), hideDock = new Set();
-  new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? hideDock.add(e.target.id) : hideDock.delete(e.target.id); onScroll(); }), { threshold: .25 })
-    .observe($('#film'));
   new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? hideDock.add(e.target.id) : hideDock.delete(e.target.id); onScroll(); }), { threshold: .1 })
     .observe($('#next'));
 
@@ -333,38 +331,6 @@
     layers.addEventListener('click', toggle);
     layers.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   }
-
-  /* ---------- video ---------- */
-  const player = $('#player'), vid = $('#demo'), playBtn = $('#playBtn');
-  player.classList.add('idle');
-  vid.controls = false;
-  const vstate = $('#vstate');
-  const start = () => {
-    player.classList.remove('idle'); player.classList.add('loading'); vstate.textContent = 'Loading video';
-    vid.controls = true; vid.preload = 'auto';
-    vid.play().catch(() => {});
-  };
-  vid.addEventListener('playing', () => { player.classList.remove('loading'); vstate.textContent = ''; });
-  vid.addEventListener('waiting', () => { player.classList.add('loading'); });
-  vid.addEventListener('error', () => {
-    player.classList.remove('loading');
-    vstate.innerHTML = 'The video could not load. <a href="https://www.youtube.com/watch?v=P73MK2Du2Nw" target="_blank" rel="noopener">Watch it on YouTube</a>.';
-  });
-  playBtn.addEventListener('click', start);
-  vid.addEventListener('ended', () => { player.classList.add('idle'); vid.controls = false; vid.currentTime = 0; });
-
-  /* ---------- second film: load YouTube only on click ---------- */
-  const yt = $('#yt');
-  if (yt) $('#ytBtn').addEventListener('click', () => {
-    const f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + yt.dataset.id + '?autoplay=1&rel=0';
-    f.title = 'RoboPay proof of concept 2';
-    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    f.allowFullscreen = true;
-    yt.classList.remove('idle');
-    yt.appendChild(f);
-  }, { once: true });
 
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', () => { measure(); onScroll(); });

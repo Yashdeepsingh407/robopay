@@ -646,3 +646,15 @@ body { background: transparent; }
 .org img { height: 24px; width: auto; }
 .org .ico { height: 22px; width: 22px; border-radius: 50%; background: #fff; }
 @media (max-width: 980px) { .card:nth-child(n) { margin-top: 0; } }
+
+/* ============ TEAM CARDS v3: bigger clickable logos, social buttons ============ */
+.orgs { gap: .5rem; }
+.org { height: 48px; padding: 0; font-size: 1rem; border-radius: 12px; }
+.org > span, .org > a { display: inline-flex; align-items: center; gap: .5rem; height: 100%; padding: 0 .7rem; color: inherit; text-decoration: none; }
+.org > span:only-child { padding: 0 .9rem; }
+.org:has(a):hover { border-color: var(--cyan); }
+.org .ico { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+.org-staex .ico { background: #fff; padding: 2px; }
+.socials { display: flex; gap: .5rem; padding: 1rem 1.3rem 0; }
+.soc { display: inline-flex; align-items: center; gap: .4rem; height: 36px; padding: 0 .85rem; border-radius: 999px; border: 1px solid var(--line); color: #eef2fb; font-size: .85rem; font-weight: 600; text-decoration: none; }
+.soc:hover { border-color: var(--cyan); color: var(--cyan); }
