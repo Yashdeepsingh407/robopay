@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Research – Machine Payments on Solana | RoboPay</title>
+<meta name="description" content="Can a moving machine settle a payment on-chain the moment it arrives? Results, market forecasts and survey data from the HTW Berlin RoboPay paper.">
+<meta name="author" content="RoboPay, Machine Economy Lab, HTW Berlin">
+<meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#070a1f">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RoboPay">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
+<link rel="canonical" href="https://robo-pay.xyz/research/">
+<link rel="alternate" type="application/rss+xml" title="RoboPay blog" href="../feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RoboPay">
+<meta property="og:title" content="Research – Machine Payments on Solana | RoboPay">
+<meta property="og:description" content="Can a moving machine settle a payment on-chain the moment it arrives? Results, market forecasts and survey data from the HTW Berlin RoboPay paper.">
+<meta property="og:url" content="https://robo-pay.xyz/research/">
+<meta property="og:image" content="https://robo-pay.xyz/assets/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RoboPay: payments for robots and AI agents, under the headline Nobody clicked pay.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@R0boPay">
+<meta name="twitter:title" content="Research – Machine Payments on Solana | RoboPay">
+<meta name="twitter:description" content="Can a moving machine settle a payment on-chain the moment it arrives? Results, market forecasts and survey data from the HTW Berlin RoboPay paper.">
+<meta name="twitter:image" content="https://robo-pay.xyz/assets/og.jpg">
+<meta name="twitter:image:alt" content="RoboPay: payments for robots and AI agents, under the headline Nobody clicked pay.">
+<link rel="preload" href="../assets/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../tokens.css?v=df777b1c">
+<link rel="stylesheet" href="../style.css?v=c78377e2">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://robo-pay.xyz/#org",
+  "name": "RoboPay",
+  "url": "https://robo-pay.xyz/",
+  "logo": "https://robo-pay.xyz/assets/icon-512.png",
+  "image": "https://robo-pay.xyz/assets/og.jpg",
+  "description": "Payment layer for robots and AI agents. A delivery car arrives, a Solana escrow pays the owner. A research group at HTW Berlin heading toward a startup.",
+  "foundingLocation": "Berlin, Germany",
+  "parentOrganization": {
+   "@type": "Organization",
+   "name": "Machine Economy Lab, HTW Berlin"
+  },
+  "sameAs": [
+   "https://x.com/R0boPay",
+   "https://github.com/kevkaseeker-source/robopay"
+  ],
+  "member": [
+   {
+    "@type": "Person",
+    "name": "Kevin Ehrentraut",
+    "jobTitle": "Founder and Technical Lead",
+    "sameAs": [
+     "https://www.linkedin.com/in/kevin-ehrentraut-6472473a0/",
+     "https://x.com/KEBNH123"
+    ]
+   },
+   {
+    "@type": "Person",
+    "name": "Xinyan Liu",
+    "jobTitle": "Hardware and Mechatronics",
+    "sameAs": [
+     "https://www.linkedin.com/in/xinyanliu0112/"
+    ]
+   },
+   {
+    "@type": "Person",
+    "name": "Yashdeep Singh",
+    "jobTitle": "Business and Market Research",
+    "url": "https://yashdeepsingh.com",
+    "sameAs": [
+     "https://yashdeepsingh.com",
+     "https://www.linkedin.com/in/yashdeepsingh407/",
+     "https://x.com/yash__btw"
+    ]
+   },
+   {
+    "@type": "Person",
+    "name": "Prof. Dr. Alexandra Mikityuk",
+    "jobTitle": "Supervisor",
+    "sameAs": [
+     "https://x.com/alexandrastaex"
+    ]
+   }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://robo-pay.xyz/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Research",
+    "item": "https://robo-pay.xyz/research/"
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body class="page-research">
+
+<a class="skip" href="#top">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="../" aria-label="RoboPay home">
+    <img src="../assets/robopay-logo-96.webp" width="40" height="40" alt="">
+    <span>RoboPay</span>
+  </a>
+  <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks" aria-label="Main">
+    <a href="../">Home</a>
+    <a href="../how-it-works/">How it works</a>
+    <a href="../research/" aria-current="page">Research</a>
+    <a href="../team/">Team</a>
+    <a href="../blog/">Blog</a>
+    <a href="../faq/">FAQ</a>
+  </nav>
+  <a class="btn btn-sm nav-cta" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
+</header>
+
+<main id="top">
+<section class="research" id="research">
+  <div class="wrap">
+    <h1 class="big sm">Backed by research.</h1>
+    <p class="lead">Our HTW Berlin paper asks one question: can a moving machine settle a payment on-chain the moment it arrives?</p>
+    <div class="r-grid">
+      <div class="r-figs">
+        <figure>
+          <img src="../assets/fig-prototype.jpg" alt="Indoor proof of concept: Raspberry Pi 4 with 4G module and GPS next to a phone showing the Drone Delivery app" width="900" height="627" loading="lazy">
+          <figcaption>Indoor proof of concept. A Raspberry Pi with a 4G SIM signs the payout.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/fig-redesign.jpg" alt="Redesigned hardware: Raspberry Pi 4 with SIM7600 4G and GPS HAT, external GPS antenna and 4G antenna" width="900" height="503" loading="lazy">
+          <figcaption>The redesign. GPS now comes from the 4G module.</figcaption>
+        </figure>
+      </div>
+      <dl class="r-stats">
+        <div><dt>8 s</dt><dd>From delivery trigger to a confirmed Solana transaction. One indoor run, target 15 s.</dd></div>
+        <div><dt>30+</dt><dd>Outdoor GPS test runs planned to prove it.</dd></div>
+        <div><dt>3</dt><dd>Nodes in the next design: one fixed drop point and two mobile carriers.</dd></div>
+        <div><dt>165M</dt><dd>Agent payments on the x402 protocol by April 2026. Machine payments are arriving.</dd></div>
+      </dl>
+    </div>
+    <div class="gap">
+      <p><strong>The gap.</strong> No prior work combines a moving device with an on-chain payment that arrival triggers. The demo car proves delivery with a QR code. The research track tests GPS arrival.</p>
+      <ol class="steps-r">
+        <li class="done">Indoor proof of concept</li>
+        <li class="done">Hardware redesign</li>
+        <li>Outdoor GPS tests</li>
+      </ol>
+    </div>
+    <p class="fine">Working draft, September 2026. Supervised by Prof. Dr. Alexandra Mikityuk.</p>
+  </div>
+</section>
+<section class="market" id="market">
+  <div class="wrap">
+    <h2 class="big sm">Machine-payment markets are growing.</h2>
+    <div class="mrows" id="mrows">
+      <div class="mrow" style="--w:22%">
+        <div class="mlabel"><h3>M2M / IoT payments</h3><span>2026 to 2034</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>$11.3B</b><span>to $55B</span></div>
+      </div>
+      <div class="mrow" style="--w:62%">
+        <div class="mlabel"><h3>Agentic AI commerce</h3><span>2026 to 2030</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>$8B</b><span>to $1.5T</span></div>
+      </div>
+      <div class="mrow" style="--w:100%">
+        <div class="mlabel"><h3>DePIN</h3><span>today to forecast</span></div>
+        <div class="mbar"><i></i></div>
+        <div class="mval"><b>~$30B</b><span>to $3.5T</span></div>
+      </div>
+    </div>
+    <p class="fine">Forecasts differ 2–5× between sources. Sources: StartUs Insights, Nevermined, bex.co (2026); RoboPay project paper §15. Bar lengths are illustrative, not to scale.</p>
+  </div>
+</section>
+<section class="demand" id="demand">
+  <div class="wrap">
+    <h2 class="big sm">Would you accept a delivery robot?</h2>
+    <div class="mrows survey" id="survey">
+      <div class="mrow" style="--w:92%"><div class="mlabel"><h3>Want an instant notification</h3></div><div class="mbar"><i></i></div><div class="mval"><b>92%</b></div></div>
+      <div class="mrow" style="--w:86%"><div class="mlabel"><h3>Would pay a premium</h3></div><div class="mbar"><i></i></div><div class="mval"><b>86%</b></div></div>
+      <div class="mrow" style="--w:71%"><div class="mlabel"><h3>Say yes to a delivery robot</h3></div><div class="mbar"><i></i></div><div class="mval"><b>71%</b></div></div>
+      <div class="mrow warn" style="--w:47%"><div class="mlabel"><h3>Find blockchain as safe as their bank</h3></div><div class="mbar"><i></i></div><div class="mval"><b>47%</b></div></div>
+    </div>
+    <p class="fine">38 responses, first round, mostly aged 18–24. The last number is the one we have to earn.</p>
+  </div>
+</section>
+<section class="vision" id="vision">
+  <div class="wrap">
+    <h2 class="big sm">Any machine that delivers can pay.</h2>
+    <p class="lead">One payment stack, every robot. Cars today. Drones, boats and humanoids next.</p>
+    <ul class="machines">
+      <li class="now"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="20" width="38" height="12" rx="5"/><path d="M14 20 l4 -8 h12 l4 8"/><circle cx="14" cy="34" r="4"/><circle cx="34" cy="34" r="4"/></svg><span>Delivery cars</span><small>Prototype running</small></li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 14 L34 34 M34 14 L14 34"/><circle cx="12" cy="12" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="12" cy="36" r="5"/><circle cx="36" cy="36" r="5"/><rect x="19" y="19" width="10" height="10" rx="3"/></svg><span>Drones</span><small>Next</small></li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 30 h36 l-6 10 h-24 z"/><path d="M24 8 v20 M24 10 l12 16 h-12"/></svg><span>Boats</span><small>Next</small></li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="9" r="5"/><path d="M24 15 v16 M12 20 l12 -3 l12 3 M24 31 l-8 13 M24 31 l8 13"/></svg><span>Humanoids</span><small>Next</small></li>
+    </ul>
+  </div>
+</section>
+<section class="roadmap" id="roadmap">
+  <div class="wrap">
+    <h2 class="big sm">What comes next.</h2>
+    <ol class="road">
+      <li><b>Payouts follow the Machine-NFT owner</b><span>Built, in testing</span></li>
+      <li><b>Letterbox co-signature with weight sensor</b><span>Next</span></li>
+      <li><b>On-chain fee split and security hardening</b><span>Next</span></li>
+      <li><b>From research group to company</b><span>Goal</span></li>
+    </ol>
+  </div>
+</section>
+<section class="next" id="next">
+  <div class="wrap">
+    <div class="next-head">
+      <h2 class="huge">Machines will pay machines.</h2>
+      <img class="next-logo" src="../assets/robopay-logo.webp" width="190" height="190" alt="RoboPay logo: a hub connected to a car, a drone, a robot arm and a chip" loading="lazy">
+    </div>
+    <div class="links">
+      <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener"><small>Code</small><b>github.com/kevkaseeker-source/robopay</b></a>
+      <a href="https://x.com/R0boPay/status/2108523676870250990" target="_blank" rel="noopener"><small>Proof of concept 1</small><b>x.com/R0boPay/status/2108523676870250990</b></a>
+      <a href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener"><small>Proof of concept 2</small><b>x.com/R0boPay/status/2109292459805061144</b></a>
+      <a href="https://x.com/R0boPay" target="_blank" rel="noopener"><small>X</small><b>@R0boPay</b></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="dock" id="dock" aria-label="Quick actions">
+  <a class="btn" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
+  <a class="btn btn-ghost" href="../how-it-works/">How it works</a>
+</div>
+
+<footer class="foot">
+  <div class="foot-main">
+    <p class="foot-brand"><img src="../assets/robopay-logo-96.webp" width="36" height="36" alt=""> <span>RoboPay</span></p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="../how-it-works/">How it works</a>
+      <a href="../research/">Research</a>
+      <a href="../team/">Team</a>
+      <a href="../blog/">Blog</a>
+      <a href="../faq/">FAQ</a>
+      <a href="https://x.com/R0boPay" target="_blank" rel="noopener">X</a>
+      <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener">GitHub</a>
+      <a href="../feed.xml">RSS</a>
+    </nav>
+  </div>
+  <p class="foot-note">© 2026 RoboPay. A research group of the Machine Economy Lab, HTW Berlin, building toward a startup. Built with Staex, peaq and Solana.</p>
+</footer>
+
+<script src="../main.js?v=53bb0257" defer></script>
+</body>
+</html>

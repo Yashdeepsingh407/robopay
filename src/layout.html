@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="RoboPay, Machine Economy Lab, HTW Berlin">
+<meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#070a1f">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RoboPay">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="canonical" href="{{canonical}}">
+<link rel="alternate" type="application/rss+xml" title="RoboPay blog" href="/feed.xml">
+<meta property="og:type" content="{{og_type}}">
+<meta property="og:site_name" content="RoboPay">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{og_image_alt}}">
+<meta property="og:locale" content="en_US">
+{{article_meta}}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@R0boPay">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{og_image}}">
+<meta name="twitter:image:alt" content="{{og_image_alt}}">
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/tokens.css?v={{v_tokens}}">
+<link rel="stylesheet" href="/style.css?v={{v_style}}">
+<script type="application/ld+json">
+{{jsonld}}
+</script>
+</head>
+<body class="{{page_class}}">
+
+<a class="skip" href="#top">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="/" aria-label="RoboPay home">
+    <img src="/assets/robopay-logo-96.webp" width="40" height="40" alt="">
+    <span>RoboPay</span>
+  </a>
+  <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks" aria-label="Main">
+{{nav}}
+  </nav>
+  <a class="btn btn-sm nav-cta" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
+</header>
+
+<main id="top">
+{{content}}
+</main>
+
+<div class="dock" id="dock" aria-label="Quick actions">
+  <a class="btn" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
+  <a class="btn btn-ghost" href="/how-it-works/">How it works</a>
+</div>
+
+<footer class="foot">
+  <div class="foot-main">
+    <p class="foot-brand"><img src="/assets/robopay-logo-96.webp" width="36" height="36" alt=""> <span>RoboPay</span></p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/research/">Research</a>
+      <a href="/team/">Team</a>
+      <a href="/blog/">Blog</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://x.com/R0boPay" target="_blank" rel="noopener">X</a>
+      <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener">GitHub</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+  <p class="foot-note">© 2026 RoboPay. A research group of the Machine Economy Lab, HTW Berlin, building toward a startup. Built with Staex, peaq and Solana.</p>
+</footer>
+
+<script src="/main.js?v={{v_main}}" defer></script>
+</body>
+</html>

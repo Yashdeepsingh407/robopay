@@ -11,30 +11,32 @@
 <meta name="color-scheme" content="dark">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="RoboPay">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png">
 <link rel="canonical" href="https://robo-pay.xyz/">
+<link rel="alternate" type="application/rss+xml" title="RoboPay blog" href="./feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RoboPay">
 <meta property="og:title" content="RoboPay – Payments for Robots and AI Agents">
-<meta property="og:description" content="A delivery car arrives, a Solana escrow pays the owner. RoboPay is a payment layer for robots and AI agents, built by a research group at HTW Berlin.">
+<meta property="og:description" content="RoboPay is a payment layer for robots and AI agents: a Solana escrow pays the owner when a delivery car proves arrival. An HTW Berlin research group.">
 <meta property="og:url" content="https://robo-pay.xyz/">
 <meta property="og:image" content="https://robo-pay.xyz/assets/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="RoboPay: a white delivery car with a parcel drives along a road at night under the headline Nobody clicked pay.">
+<meta property="og:image:alt" content="RoboPay: payments for robots and AI agents, under the headline Nobody clicked pay.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@R0boPay">
 <meta name="twitter:title" content="RoboPay – Payments for Robots and AI Agents">
-<meta name="twitter:description" content="A delivery car arrives, a Solana escrow pays the owner. RoboPay is a payment layer for robots and AI agents, built by a research group at HTW Berlin.">
+<meta name="twitter:description" content="RoboPay is a payment layer for robots and AI agents: a Solana escrow pays the owner when a delivery car proves arrival. An HTW Berlin research group.">
 <meta name="twitter:image" content="https://robo-pay.xyz/assets/og.jpg">
-<meta name="twitter:image:alt" content="RoboPay: a white delivery car with a parcel drives along a road at night under the headline Nobody clicked pay.">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABdmlDQ1BJQ0MgUHJvZmlsZQAAeJylkLFLw0AYxV9bRdFKBx0cHDIUB2lB6uKodShIKaVWsOqSpEkrJG1IUkQcHVw7dFFxsYr/gW7iPyAIgjq56OygIIKU+K4pxKGd/MLd9+PdvcvdA8JNQzWdoXnArLl2IZOWNkqbEv6UrDrWcj6fxcD6ekRI9IekOGvwvr41XtYcFQiNkhdVy3bJS+TcrmsJbpKn1KpcJp+TEzYvSL4XuuLzm+CKz9+C7WJhBQhHyVLF54RgxWfxFkmt2ibZIMdNo6H27iNeEtVq62vsM93hoIAM0pCgoIEdGHCRZK8xs/6+VNeXQ50elbOFPdh0VFClN0G1wVM1dp26xs/gDlaQfZCpoy+k/D9EV4HhV8/7nANGToDOoef9nHlepw1EnoHbVuCvtxjnO/VmoMVPgdgBcHUTaMoFcM2Mp18s2Za7UoQjrOvAxyUwUQImmfXY1n/X/bx762g/AcV9IHsHHB0Ds9wf2/4F9IxzaxM+sS0AABcRSURBVHjahZp5lB31dec/v6Xq7a/3VqtbUmtFwyJAEgghFi+MwRgbMARIiGObMwcb7PiceE4yOJsHJ3ZiDybxzjieMXHAMXGwnRDbYwjGNlhgxDpCCCHQ2upW79t7/Zaq+v3u/FGvuwVJPH1On67qV6/q3t/9/u79fu8tZW2ZN/8opQCFoBClUKTnSunWp8qAThKJ8EmE1rktbYXeXZ3ta7Z1FPu35vOd/UGQH9AmEBQ4cSqKq8OV2uTIzPzICzNzx56vViaeFBe9ZG0GbSyIt4I48CIigCAISgRF61zk39r6ZgdS4wExoDSiQKFBKaXQGpSLkwaC6u1uG3zfur5t1/Z0nrYjCLKZKFqgUp9ioTlDM6qS+ARE0CYgky2RK3RQyHcTZPI044Xm+MTBPcNDz/3T7OzQ/Vozbk0WQQx4L+IFPEoAEVAOoXX8HzmQGq9b/mq01oAC0FoFPnYR3vuBwd5z7zxr7WVXF3KdvWOzRzg+sY/JmaO+1pwVL06BKPGJAiF9qkEZIwiijZFstl11d63VK/vPob17kGr15PjBVx97aHx4353W2mFjA7yPtYh4pUDE48WzaE0aCf9GBxZhg2hQClE6BQvKonQSRfWgp23jHRf8p+s/lsu29R4Y2s2hk3uSWnNeG22VMYHS2qKUwjtHudBLvjiAM7BQGaI2P4G2ASIecTGJi8R5J4V8p1+9bodds3EXler4+P5nv//l+emjnwsyuRiwgk9EPII/BU4g4pYdWFx5RCE6PU6N18aLd867Tds3Xn/v6at3XbTv2OPsO/7TJEnqJgzzSqugFTFQSpO4iJUdmyjmBpmojeG1Jt/XQW3iMJWxE5jAIF5AtVbTx0RRXcKg4Dac+Z/tmtN2cnj/z3cffOlHt2SsfU20MiLeLa668kKKK4+IoIKgbWnDKjRohYjCaGsTHyVWl2+8fOuH77Eq6Hxs37eSudqIyWZKSqsA52XJcAAvCRmbZ333DoZrJzjr7PX4xPHSgWPk1vYz99IenI8A09qUHoXCaBCJaNarUuxY47a+5f22Xp+bfv6xv7kdib6rtbXeJ4lSAl7SaLSWzRiTB9GIUtCCjVGBjX0zKWZ6b732gjv+7uTc4dy/vvh1JyTWmlB573Deo5RpRU/QKkQpS1exH5/k6B0sEK7dSNhRws5VmIpiTFIjqdVRxqAUKBSCJ/YR4gVrMiqOqvrYgSdc96ozChu3XXnDycMvjrio9qw2gSWNXbpookApjDa51AilUWmqtM67pJjpvfXqnZ/4m1eGHnd7Dj5INlMygqK9tJq29g1kSx0kjRqIIgzLGB0A4JyjuzzAiZkhBrvbkco8Bw8dJ9fbRX3kBLTSskLhSQiDPD3tmyi2rYJAEzcWsDbUJ177lc+WOv3mnddfM3zo2REfN59VylgFPrU1TbNGmVzLeI1S1nicC3XxN6654Pfve2Xocff8oR/pfL5DJ96xrmcbmewAMwtziA7p2XgGrlYnalZxvolHaLo6mTBHW2Y1rx89xOjJOXIrVxHPnKQ+N5WuvgDiKYQdDPbuoBI1ma/WKfeuJtNRojY9SiZTUGNHnleZUqffeP7V14y8+tTLSmQfGqMWk6kCY2w+3bRorbT1iUvWX7ntY/9ycv5IZs/B76lcvkPHSUJXaYB8sIbJaIjzd5zJ5MlhKvWYfF87tdERtA1BaYyxzDen0Xjai+vR+YDG7HGqk8MYG6QFEYUH1vecw8nKGDU3zaaNq0hq80TFTlTSIF6oYHNFNXb4BdpXbpK+TTsuH3n1qX80NpgW8ZpWjtZpLlBKKauiqBpu2/jev9cm7Ni9/zuSybZrL+l2yQcdzCeTDK4boNmIOO2MzeSVJ1IaE2ZBKbTSKCyBDpmqnuTSywcp5maZHRvG2hxKDFpZUAprsxgdMFOZ5JKLLiSKYXqqgqstkC2VwAsKyOba9Ms/+zvJljs7Vm1959/HjVqotVUt3KcOaKV14iLX07bxD85YddEFP9v7rSSwWZPWZAGlaboKBdNGNmvxEpMLwOSzaC/4JMHoAKUsWluMzpIL25mdauKTDNl8B0bnUCYANFqHJEmEiBDaPKVylrZyltnJcbKlMs1aDdE6TZNKYbQ1+x67Lxnc9vYLcp2r/8AnsWuxAow2Ra2UFpckK9967q33HRp9LnN0/DmdDQtKhBQWylKPq/SUB5gajxgaGubkRJWgp4dCFWq1Ko1GRJjJEZg8NsijdZaFyRz1pk/phLUobdPkl8TYbAnT1s6q0mpeO3KUickZSqvWoWkyN3QIbQI8aRSMNSzMjKmw0Cm9m7dtHXvlqfuMDSso0cYGBRMnTb+6d9tfr+s756Jf7LvPhUHWeNI0lRY1Ayhm6+MUc23kCz3YQoaF0SNMjp9gx85LeNs7LmH/S4exYZ5CoZeB7rMxQYguFCl2rcE3Y4gTRAn5Yh+ZQpmp8ddoNOfIBh0om4UgZu7ofhDfevYiiYPAGjU7etitOf+dherkcFt9fvwhbawxxpTEuaTnorN++yuHR5/Ljc4c1IHNKQ+tPJ9mKN0qVvP1CRZq49TmxvE+wQtgEorFHuYrOVYU19KT7+f42EsMj+1lZvo4iW9SPu10wrBEQbcT+Yj5mWNopYmSBaoLo9QqJ6kvTEAQQuJQOk01shgFbWnW5pTNl+jcuGXtxCt77jU2WNCJj6W7bd3vFHJdXYdOPuMywSJ01BIzFdI6gdJYnUHbABNkUCogk8kzPjLLwz/+Kd3ZTopYnnn1ITpz3Ww//Xo2b38vur3Isd0/JOnN4DoKNKvTBGEepQxahxibQQcZtApJ+ZRGJC2quhV9L0Imk1djr/zK5XpWd+U7+37HJ060j2O9rm/bdeOzR6TWmFNam5QkoZaTLULiY7Qy6VnsUoapLApDEOYpt3UTiuX10RdY33Mmq9o3sPfoo5x4+QnKp51JYe06Zg7sRbIBgS1gWhs+hafGeZfuFW1wLl6styl1ay2kMgHNmUm1MDUsHZu2XueSprbaZDf3dm3avv/Yz5TW1iAgqXBpCRkwOmRl2yZsrp1mINTrU9SnxlDG4ETQAiiDshnCIMdAeS3PHXuU09ZdjMtbDj3zOMVzzqC+/1WsDkFZksQivoEShRNFX/smTFDGZzVR+ywzw6+Cj3EtMSVKo/BohZk+8hI9m7ZvH97z8GbdVuy5NAjy2YmZoz4wIcuaYRlCa3u2ki+3MTz5OrXpE7QPDFAaGCRQIeXCCsqlAQqllWRy7TjniF2T3uIahkb3cvLAMxRWrMTX64gIhgIXXLCT9936G9hcNyrMsqrjNDK2TM1NMDd5lIbzdG4+B/HS2nstNAiYIKRy4rA3xXI2LHVeqjvLgxc0ogVqzTnRxiAtQaZQOO/ozPfhYk95pWX7uaez4/wt6PkJgu6VlEor8JLQaFRYmB+jWZ2lYPM8e+IXrO87m+7iWooDG2kb3Mz0L3djSgXq8Tyvv36QZ576vyglFNr7KeW7GJ47yFlb1nHeji00x0dIgExHJ967U/YiaBMQz09LEjfJ9wxcYNvK/WdW65N479Ui7tMip/BesCbASUJ1foGrrryM2Zk59u59mbhYIaqP4xKHMXmCIM9Ec4LB/u34yYBfHHiQvs7NNHBMPfIUXRvOpjSwmebrQ4xNT3J0uIrVMTpqUC8GKK3IZfOYIKRv5UomFmrYIAAvoFM0pLZpXBKreGGGbO/KM22x0DVQqY4DTqXZpsXxRbDaMlefYl3POqLmAj/84SNogWxnDxIbmrHH2GwLdp75+hQHBfp7zqWz63ReH3oC6ob1Z78bxFLdf4RGNI02ilw2g/Oaho/IBDlypo0DBw/iGgnTlTrldYNMnzyENhaPb23pVnb0TjUrc4Rt3QM2sPmBRlQBtGL5MlCglaEeLzBePUoxXsN0bQYymmxvmdqJIUSl6kij8OLQLiGJKhybfpVSoYeNG67AaU1lYox6bYKEJolPEO9bYkYAx/D8UVZ2rGdyapxIGcr9fcwffw0X1dAmAO9bjK2FI5RKGjVyK/oHrDZWYherJZyJLGYtvHisskzNn6CRq1Eo9JEYT/Xoq+l1JrOoLlAIzsf4pIE1sFAdp1abRQk4ifBEJEkdfJIKcmkpP2WoNyscndhLqdBNoDyzR/fSrM+16IRHKWFRySiVOu5cE4JA7OKC8+/0XGh1Z6wx1KNZFpqzGBVgbAGtg9QJUshJ6+beJSTUW5svamUQh/NNRFx6vcjitxABowzON5mafR1xSVrAjEG8W+6YvOlgsURZ52NlbbZ1w/TzRRKlWv9YpBVWW1CmtYICyoNyKGXS74ugtUcEnDSXtLKIB3FoBL+4UCqFD5JqXACtQrAGxOEkXmynLbq67ASgwgw+birbTBaGM5niQKvZopZqrywVQJaSMMsds9QATjHApe0YWYrJUu9m6RpxiCRpS0R8axllSeAvdd/ELwOjFSXk1BCI2FxeRbXqsK7UpoZzhfbWtS5lPkphrcFYgzUGo3UrO/lT2nw+fZAIWtPqLDi8OPAJSjx4l/5KghKH90mrAaBaSSKt9b5lvGpFUfAsgX4RGUpSHScOr5SEpXaiuclhOzc//HJ396YdyhgRQCtNM45pVGfTXlGqi8iVS2ilEBG0TuEjJIBiZnYWlKW9XEaRpKaIbzFZkFYPBzxxVCOO6ihSR00QoI1ejOsi9UrD/+Y2Yuu+OsxIUG4nemHkZTszM/R0GBZuyeU6lYvqxD6hf2UPN950C4EN0Npw4MAhfvyTJ/AKrM3QbEYo5cnlMsRxxG/e+BaMCfjBPz+JIiCTCfA+RmtLHCckSUIYBjgf0d2/ib51W/B44niB4QNPMTd5HGsNkkSIkVZ3L2kB2qf4bzXDvHMEbV1KhZba+NDTtjo/9ngzXmh0d63NnhzeSxwJg4MDfP5zf4pzMdWFGm3lNu7/9vf5wAfvoK6arOxbgTaW0dFpnFd89tMfI4pjvv2dh1m9aoDRsVly2ZBKpUJHZ5nurjLjk3NUZic56+JruPCG25gaGycot7GleQsPf+mjzB0/iC2USBpzxM0aYa6IS5oIKVlU1iKS4OsNims36agy14gr048DRX3m2R/85c6L7/A66EmgT87bcaXEcSK3ffSPBZAf/fhRERHpH7xQ7vmf90sUxZIkiXz7gR9Kqe182bPnJTl+YkSef3G/NJuR3PuthyST3yW/+3v/Q8YnZsQ7J889f0C2bLlGzrj8L+X2byfSNXitdK+9Wm75rpOd/+VeueKTP5cbvjkqV33lFVl7ye1y4e8/KLv+6CFRdMq5H/6aXPyXj0iYXSNadSdr3/dJ333hDb9UlLQ2NutPDD33/bauQZXPdwrEaK2x1nDJRdu58aYPsHnzBg6+foSbbngXt334t/n0X3yVO/7wc9x801Xc/pEbmZmdpa+3m//1je/xwD/+hA++/z3cfvu1fOHu/8oLL+7n5vd9gtNPH+RrX76DhIQoY2hfs4GOzVvwJU11foyDP/0uBx77B1w+y4bf+gjV6gxdF7+dbMcApZ1vpd5cIGnMkukdkGxXn6oc2Pt9a7NeG2vU3Oyx+6rVsanV63YaqIkxCucc737XZfzDA3/L+rWrueGG29m4YS1RFPFnd97N3Xd9gUqlwvnbtpDNZnnlwGG+9tU/5+6/+luSxPGuKy/BaMNffeE+HvjOl/jJw7s55+xNFNuzzPuI8z76Kc77yJ0c/dUjTLzyHP3vuo5Cbw8L0yPEuYDxF39JZDS9l1wO3R1MvvBLPAvSvu1Cs3Dy6FQ0M3KfslppEWe01hOvHXj0B2s37lRQct4lGGP45H+/i8vecQNKG95xxcXs3v0MYRjy+b/+JH/2mU9SKpXY/eQzKODsLZu54w8/w59/6mNYa3jwwR+TxAl/8kcf4vbb7+A9V72VPU/vZbpex/aGPPONO/nJx69h96duo7RhM33XXMbQC09Qac6h+1dSPbyPSmWMvg//HkkgzO7fg8n1ufKZW9XUk//6A2PshMcZY2weYwLmZ088s2L1ubeYbEeuPn+YHedvVz//xZM89M8P0t3Tz2WX7eKLX/wm9XqD2z50M7t2buWb936Xv/js19i161x+8cTTXPnOSzn37M18+av3cdddX+fI8VGufvdbuf66y9n91PPcdtuf0ggK5Hr7OPQv32LhxCFMLoebncJ2raHzkrfRPH6IxuwYY4/8gHjiBMWL3kKzNsvxez4rfe+8SblGdWbmyYdv0NncAl5QJuhCaWNwzuVKK/9415Uf//Tu//PFpDozZINMiSAIqFXrYA25bIF6dZ5SRydaGeamZ8kUCngnxM0IE4YUinnmZ6rkSwVq1QVyhSz5fJbpqXm00WQCQxI3MEG4VOp91EwLX5ghqVfwSYOOnZfSff2N5C69jPmHHmTkns8na2/7hD18z2f/RKrTnxGljYhzRptsOhkw1tSrE08plbl887ar1pw49CtnrNEIhJl0ECfiyeRyRFFCnDhyhVza8jCaTDaDNpo4jsnmQwRPJhPivafZbJLJBFibdheMscv0RDxojRiF+BiTySJJTH7VGspvv4K5Jx5h9Btfcatuvt1OPPHI0/VD+27VmQyI8+mEJuhI1Q5aa6191Gyu33H5x5+No1rbCz//Opl8h8an2kAW9YK2SzpVqWXxv9iKEUn5i2qNYZZo/CKvafUbZGnyuDg6WiSJ4OMmPqqSUPWrf+u/4cTNjT5wz3kmmzssPtFKxEs64EhXUZQRQRmj1fTokRcPbdx25U35Yo8fPfK8MmFWLT9ELbc7WLJmeQR6SvlXp5K/U8mg+JRbnTJORVpcZ/G+RhPHkfRfd6tkuleY4/d/6f02CHenU0zxqkU2jdYZZEmLiaCMFZ/sO3nk+ZHTdl5/TbbY6cePvIA1oUItrrVvqYtl1XCqflimMq1Z75KDi6pETlFki7Ngv3Qn8TFxver7rrlZCms2mGPfvOtDxsv9opVFnEuJcEoxjNaZ9AGtQCvwWlvr4tqzI4eeG9m04z3XdPSfpkYPP+vwXqd7QVojolOG0GoRCotQWe4mgFs2XjwKj1r6KyjlWxQdfLOOgBu4+TaT6e7Rx//33R9SSfMbGGMRl6SRWtQTLQeWuF6L5oL3WgdW4ujZ4QNPvbLitB2XDW67ojB98lBSmx1V1gZKaXOKI6mhurXySk6lwMvTdvUGJ1O4eVpy3Ec06/OSXb3erfnA79pobmJ66P6vftCIv0+MtuJdsmienCIQlhxQrW60LM2MxaONUST7Rg786geEuW2b3/Kba8NSu5o7eTiJavNKG61Ua4qwPL+VluGnQO0NUWFpTygF4iLiRlVUruxWXHGd6XnbVXry8Z/snnzkwfcENnhCtDKIc8tQlTfA9t991WBp5IpCtLZaqSRq1INcx6o7Nlz83o8Vulb1jh3cw+j+p5Lm7KRGoWwQKm2CtDH7ptcWFje4bmUd72Jc1BSPkrC7z7dv22nbztpObfjo+Ngj3/uymxn/nMnmYxFvlfdJ6rJf0tO/9l2JZUdMism0VaeNCb1PIpIkGmgbOPPOVdvfdnW2Z01vbWqYqcN7qQwf9vH8tCRJpLT4VhdkaUekbigrOggk7OhWucGNurTpLMKePhojR8ennnz0ofqJ1+60NhwmsPgk0SBeKwXiW5KT///LHrxZAyndemtFK4XSSmvnowjnXW++s+99HZu2Xdu+5owdpljMxEmTuDJLVJ0jblTxLkaUQluLzZUI2tqx5XZUEBJVZ5rVQ/v2VF7Z+0/RzNj9RgfjhAF4Z0S8T9U1SxP5/9DCX+/AG1+9SauSUihtlFKJT2Jc0kRht4Tl7l25noFtuZ6+rUG5s9+W2gd0kBFRCpc0VLwwNxzPTo00x0deqI+feD6en34S/EvaZtHWICIW8Q5Jk+9ihvt1xgP8P2Ip3XtACl8JAAAAAElFTkSuQmCC">
-<link rel="preload" href="assets/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="tokens.css?v=3">
+<meta name="twitter:image:alt" content="RoboPay: payments for robots and AI agents, under the headline Nobody clicked pay.">
+<link rel="preload" href="./assets/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./fonts.css">
+<link rel="stylesheet" href="./tokens.css?v=df777b1c">
+<link rel="stylesheet" href="./style.css?v=c78377e2">
 <script type="application/ld+json">
 [
  {
@@ -59,12 +61,19 @@
    {
     "@type": "Person",
     "name": "Kevin Ehrentraut",
-    "jobTitle": "Founder and Technical Lead"
+    "jobTitle": "Founder and Technical Lead",
+    "sameAs": [
+     "https://www.linkedin.com/in/kevin-ehrentraut-6472473a0/",
+     "https://x.com/KEBNH123"
+    ]
    },
    {
     "@type": "Person",
     "name": "Xinyan Liu",
-    "jobTitle": "Hardware and Mechatronics"
+    "jobTitle": "Hardware and Mechatronics",
+    "sameAs": [
+     "https://www.linkedin.com/in/xinyanliu0112/"
+    ]
    },
    {
     "@type": "Person",
@@ -72,13 +81,18 @@
     "jobTitle": "Business and Market Research",
     "url": "https://yashdeepsingh.com",
     "sameAs": [
-     "https://yashdeepsingh.com"
+     "https://yashdeepsingh.com",
+     "https://www.linkedin.com/in/yashdeepsingh407/",
+     "https://x.com/yash__btw"
     ]
    },
    {
     "@type": "Person",
     "name": "Prof. Dr. Alexandra Mikityuk",
-    "jobTitle": "Supervisor"
+    "jobTitle": "Supervisor",
+    "sameAs": [
+     "https://x.com/alexandrastaex"
+    ]
    }
   ]
  },
@@ -103,97 +117,32 @@
   "author": {
    "@id": "https://robo-pay.xyz/#org"
   }
- },
- {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-   {
-    "@type": "Question",
-    "name": "What is RoboPay?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "RoboPay is the payment layer for machines and AI agents in the physical world. A machine gets paid automatically when it proves it did the job, for example when a delivery car arrives."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "How does a delivery robot get paid?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "The buyer locks 0.2 SOL in an escrow on Solana. The car drives to the box and scans its QR code. It then signs the delivery on-chain, and the escrow releases the money to the car’s owner."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Why can’t robots use banks or cards?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "A robot has no bank account, cards are made for people, and a payment alone is not proof that the parcel arrived. RoboPay ties the payment to proof of delivery."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "How does RoboPay prove a delivery?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Two layers. The QR handover works on the car today. A letterbox co-signature with a weight sensor is the planned next step and closes the gap of relayed codes. Our research also tests GPS arrival detection as a trigger."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Which technology does RoboPay use?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Solana for escrow payments, peaq for the car’s verifiable Machine-NFT identity, and Staex for secure connectivity."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Is RoboPay live?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "It runs on real hardware as a working prototype: a PiCar-X delivery car and a letterbox prototype. Payouts that follow the Machine-NFT owner are built and in testing."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Who builds RoboPay?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "A student research group, the Machine Economy Lab at HTW Berlin: Kevin Ehrentraut, Xinyan Liu and Yashdeep Singh, supervised by Prof. Dr. Alexandra Mikityuk. We are working toward a startup."
-    }
-   }
-  ]
  }
 ]
 </script>
-<link rel="stylesheet" href="style.css?v=27">
 </head>
-<body>
+<body class="page-home">
 
 <a class="skip" href="#top">Skip to content</a>
 
 <header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="RoboPay home">
-    <img src="assets/robopay-logo-96.webp" width="40" height="40" alt="">
+  <a class="brand" href="./" aria-label="RoboPay home">
+    <img src="./assets/robopay-logo-96.webp" width="40" height="40" alt="">
     <span>RoboPay</span>
   </a>
   <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span></button>
-  <nav class="nav-links" id="navLinks" aria-label="Sections">
-    <a href="#story">How it works</a>
-    <a href="#proof">Proof</a>
-    <a href="#research">Research</a>
-    <a href="#market">Market</a>
-    <a href="#team">Team</a>
-    <a href="#faq">FAQ</a>
+  <nav class="nav-links" id="navLinks" aria-label="Main">
+    <a href="./" aria-current="page">Home</a>
+    <a href="./how-it-works/">How it works</a>
+    <a href="./research/">Research</a>
+    <a href="./team/">Team</a>
+    <a href="./blog/">Blog</a>
+    <a href="./faq/">FAQ</a>
   </nav>
   <a class="btn btn-sm nav-cta" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
 </header>
 
 <main id="top">
-
-<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-copy">
@@ -203,370 +152,87 @@
       through the city, and when it arrives, the money moves.
     </p>
     <div class="hero-cta">
-      <a class="btn" href="#story">See how a delivery pays</a>
+      <a class="btn" href="./how-it-works/">See how a delivery pays</a>
       <a class="btn btn-ghost" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
     </div>
-    <p class="hero-note">A research group at HTW Berlin, building toward a startup. <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener">Code on GitHub</a></p>
+    <p class="hero-note">1st place in the peaq track at the Crypto World’s Fair Hackathon. <a href="./blog/peaq-track-winner/">Read the story</a></p>
   </div>
 </section>
 
-<!-- ============ STORY (pinned, scroll-driven) ============ -->
-<section class="story" id="story">
-  <div class="story-pin">
-    <div class="story-text">
-      <h2 class="story-h">Paid only when the car proves delivery.</h2>
-      <ol class="steps" id="steps">
-        <li data-step="0">
-          <h3>The buyer locks 0.2 SOL</h3>
-          <p>The money goes into an escrow on Solana. Nobody can touch it yet. <code>create_delivery()</code></p>
-        </li>
-        <li data-step="1">
-          <h3>The car drives</h3>
-          <p>Our PiCar-X leaves with the parcel. The payment waits while it moves.</p>
-        </li>
-        <li data-step="2">
-          <h3>It scans the box</h3>
-          <p>The car’s camera reads the QR code on the box. No code, no payout.</p>
-        </li>
-        <li data-step="3">
-          <h3>The confirmation is signed</h3>
-          <p>The car signs the delivery on-chain. Anyone can check it in the Solana Explorer. <code>confirm_delivery()</code></p>
-        </li>
-        <li data-step="4">
-          <h3>The owner gets paid</h3>
-          <p>The escrow releases the 0.2 SOL to the car’s owner, found through its peaq Machine-NFT. <code>close_escrow()</code></p>
-        </li>
-      </ol>
-      <p class="story-status" id="storyStatus" aria-hidden="true">
-        <span class="tag" data-s="locked">Locked</span>
-        <span class="tag" data-s="moving">In motion</span>
-        <span class="tag" data-s="done">Delivered</span>
-      </p>
+<section class="news" aria-label="Latest news"><div class="wrap">
+<h2 class="news-h">Latest from the blog</h2>
+<article class="post-card"><a href="./blog/peaq-track-winner/"><div class="post-card-img"><img src="./assets/blog/peaq-track-winner.jpg" width="1200" height="630" alt="RoboPay and peaq logos under the headline 1st place at the Crypto World’s Fair" loading="lazy"></div><div class="post-card-text"><time datetime="2026-10-26">26 October 2026</time><h3>RoboPay wins the peaq track at Crypto World’s Fair</h3><p>RoboPay took first place in the peaq track of the Crypto World’s Fair Hackathon by Colosseum. FieldProof, Fiducia, SKIM and DeSC followed in places two to five.</p><span class="more">Read the story</span></div></a></article>
+<p class="news-all"><a href="./blog/">All posts</a></p></div></section>
+
+<section class="teaser how">
+  <div class="wrap teaser-grid">
+    <div>
+      <h2 class="big sm">A delivery that pays itself.</h2>
+      <p class="lead">The money waits in an escrow until the car proves it arrived. No invoice, no click, no bank.</p>
+      <p class="teaser-cta"><a class="btn" href="./how-it-works/">See the full walkthrough</a></p>
     </div>
-
-    <div class="story-stage">
-      <svg id="scene" viewBox="0 0 1000 620" role="img" aria-label="Animation: the buyer locks money in escrow, the car drives to the box, scans the QR code, signs the delivery, and the owner is paid.">
-        <!-- skyline -->
-        <path class="sky" d="M0 560 V470 h40 v-60 h50 v90 h30 v-120 h60 v70 h40 v-40 h50 v100 h40 v-80 h60 v60 h50 v-110 h40 v80 h60 v-50 h60 v90 h40 v-70 h50 v60 h60 v-100 h50 v90 h40 V560 Z"/>
-
-        <!-- links -->
-        <path id="linkA" class="link" d="M150 130 C 260 40, 380 50, 452 92"/>
-        <path id="linkB" class="link" d="M548 92 C 640 50, 760 40, 850 130"/>
-
-        <!-- buyer -->
-        <g transform="translate(110 150)">
-          <circle r="42" class="node"/>
-          <circle r="13" cy="-8" class="ico"/><path d="M-22 22 a22 18 0 0 1 44 0" class="ico" fill="none"/>
-          <text y="74" class="lbl">Buyer wallet</text>
-        </g>
-        <!-- escrow -->
-        <g transform="translate(500 110)" id="escrow">
-          <path d="M0 -52 L45 -26 V26 L0 52 L-45 26 V-26 Z" class="node hex" id="hex"/>
-          <rect x="-13" y="-6" width="26" height="20" rx="3" class="ico-fill"/>
-          <path d="M-8 -6 v-7 a8 8 0 0 1 16 0 v7" class="ico" fill="none" id="shackle"/>
-          <text y="84" class="lbl">Escrow on Solana</text>
-          <text y="124" class="amt" id="amt">0.2 SOL</text>
-        </g>
-        <!-- owner -->
-        <g transform="translate(890 150)">
-          <circle r="42" class="node"/>
-          <path d="M-22 -4 h44 v26 h-44 z M-22 -4 l6 -14 h32 l6 14" class="ico" fill="none"/><circle cx="12" cy="9" r="3.5" class="ico-fill"/>
-          <text y="74" class="lbl">Owner wallet</text>
-        </g>
-
-        <!-- road -->
-        <path id="route" class="route-bg" d="M90 520 C 300 430, 520 610, 870 480"/>
-        <path id="routeLit" class="route-lit" d="M90 520 C 300 430, 520 610, 870 480"/>
-
-        <!-- sender + box -->
-        <g transform="translate(60 520)"><path d="M-24 14 v-30 l24 -16 l24 16 v30 z" class="node thin"/><text y="40" class="lbl sm">Sender</text></g>
-        <g transform="translate(895 476)">
-          <path d="M-26 14 v-34 l26 -18 l26 18 v34 z" class="node thin"/>
-          <g id="qrbox" transform="translate(-9 -8)">
-            <rect width="18" height="18" rx="2" class="qr-bg"/>
-            <path class="qr" d="M3 3h5v5H3zM10 3h5v2h-3v3h-2zM3 10h2v2h3v3H3zM10 10h5v5h-3v-2h-2z"/>
-          </g>
-          <text x="34" y="40" class="lbl sm end">Box with QR code</text>
-        </g>
-
-        <!-- scan beam -->
-        <polygon id="beamShape" points="0,0 120,-38 120,38" class="beam" opacity="0"/>
-
-        <!-- car -->
-        <g id="car">
-          <rect x="-24" y="-8" width="48" height="16" rx="5" class="car-body"/>
-          <path d="M-10 -8 l5 -9 h13 l5 9 z" class="car-cab"/>
-          <rect x="-8" y="-24" width="14" height="8" rx="1.5" class="car-parcel"/>
-          <circle cx="-14" cy="9" r="5.5" class="wheel"/><circle cx="14" cy="9" r="5.5" class="wheel"/>
-        </g>
-
-        <!-- coins -->
-        <g id="coins">
-          <circle class="coin" r="8"/><circle class="coin" r="8"/><circle class="coin" r="8"/>
-        </g>
-
-        <!-- signature -->
-        <g transform="translate(500 590)">
-          <text id="sig" class="sig" text-anchor="middle"></text>
-        </g>
-      </svg>
-    </div>
+    <ol class="flow">
+      <li><h3>The buyer locks 0.2 SOL</h3><p>The money goes into an escrow on Solana. Nobody can touch it yet.</p></li>
+      <li><h3>The car delivers and scans the box</h3><p>Its camera reads the QR code on the parcel. No code, no payout.</p></li>
+      <li><h3>The owner gets paid</h3><p>The car signs the delivery on-chain and the escrow releases the money to its owner.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- ============ PROBLEM ============ -->
-<section class="problem" id="problem">
-  <div class="wrap">
-    <h2 class="big">Machines cannot pay for themselves.</h2>
-    <ul class="pr-list">
-      <li>
-        <h3>No bank account</h3>
-        <p>A robot cannot open one. It has no passport, no address and no signature.</p>
-      </li>
-      <li>
-        <h3>Cards fit people, not robots</h3>
-        <p>Cards need a person to hold them, approve them and dispute them.</p>
-      </li>
-      <li>
-        <h3>Payment is not proof</h3>
-        <p>Money moving says nothing about whether the parcel arrived.</p>
-      </li>
-    </ul>
-    <p class="problem-end">Money and the real world do not talk to each other. RoboPay makes them.</p>
-  </div>
-</section>
-
-<!-- ============ PROOF ============ -->
-<section class="proof" id="proof">
-  <div class="wrap">
-    <h2 class="big sm">Two layers of proof.</h2>
-    <p class="lead">One code is not enough. So the payout depends on two checks, and the second one closes the gap the first one leaves open.</p>
-    <div class="layers">
-      <article class="layer live">
-        <p class="tag live">Working on the car today</p>
-        <h3>QR handover</h3>
-        <dl>
-          <dt>Proves</dt><dd>The car read the code on the box.</dd>
-          <dt>Can’t stop</dt><dd>A copied code. Today it never changes.</dd>
-        </dl>
-      </article>
-      <article class="layer planned">
-        <p class="tag planned">Planned, next step</p>
-        <h3>Letterbox co-signature</h3>
-        <dl>
-          <dt>Proves</dt><dd>The car signs the letterbox’s one-time code. A weight sensor confirms the parcel, and the letterbox co-signs.</dd>
-          <dt>Can’t stop</dt><dd>A code relayed from far away.</dd>
-        </dl>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ STACK ============ -->
 <section class="stack" id="stack">
   <div class="wrap">
     <h2 class="big sm">Connected. Identified. Paid.</h2>
     <div class="stack-rows">
       <div class="srow">
-        <div class="logo-chip"><img src="assets/logos/staex.svg" alt="Staex" width="130" height="41"></div>
+        <div class="logo-chip"><img src="./assets/logos/staex.svg" alt="Staex" width="130" height="41"></div>
         <div><h3>Connectivity</h3><p>Staex keeps the robot securely connected.</p></div>
       </div>
       <div class="srow">
-        <div class="logo-chip"><img src="assets/logos/peaq.png" alt="peaq" width="118" height="34"></div>
+        <div class="logo-chip"><img src="./assets/logos/peaq.png" alt="peaq" width="118" height="34"></div>
         <div><h3>Identity</h3><p>peaq gives every car a verifiable identity, its Machine-NFT. That is how RoboPay finds the owner to pay.</p></div>
       </div>
       <div class="srow">
-        <div class="logo-chip"><img src="assets/logos/solana.svg" alt="Solana" width="170" height="25"></div>
+        <div class="logo-chip"><img src="./assets/logos/solana.svg" alt="Solana" width="170" height="25"></div>
         <div><h3>Payments</h3><p>An escrow program with three calls: <code>create_delivery</code>, <code>confirm_delivery</code>, <code>close_escrow</code>.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ RESEARCH ============ -->
-<section class="research" id="research">
-  <div class="wrap">
-    <h2 class="big sm">Backed by research.</h2>
-    <p class="lead">Our HTW Berlin paper asks one question: can a moving machine settle a payment on-chain the moment it arrives?</p>
-    <div class="r-grid">
-      <div class="r-figs">
-        <figure>
-          <img src="assets/fig-prototype.jpg" alt="Indoor proof of concept: Raspberry Pi 4 with 4G module and GPS next to a phone showing the Drone Delivery app" width="900" height="627" loading="lazy">
-          <figcaption>Indoor proof of concept. A Raspberry Pi with a 4G SIM signs the payout.</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fig-redesign.jpg" alt="Redesigned hardware: Raspberry Pi 4 with SIM7600 4G and GPS HAT, external GPS antenna and 4G antenna" width="900" height="503" loading="lazy">
-          <figcaption>The redesign. GPS now comes from the 4G module.</figcaption>
-        </figure>
-      </div>
-      <dl class="r-stats">
-        <div><dt>8 s</dt><dd>From delivery trigger to a confirmed Solana transaction. One indoor run, target 15 s.</dd></div>
-        <div><dt>30+</dt><dd>Outdoor GPS test runs planned to prove it.</dd></div>
-        <div><dt>3</dt><dd>Nodes in the next design: one fixed drop point and two mobile carriers.</dd></div>
-        <div><dt>165M</dt><dd>Agent payments on the x402 protocol by April 2026. Machine payments are arriving.</dd></div>
-      </dl>
+<section class="teaser research-teaser">
+  <div class="wrap teaser-grid">
+    <div>
+      <h2 class="big sm">Backed by research.</h2>
+      <p class="lead">Our HTW Berlin paper asks one question: can a moving machine settle a payment on-chain the moment it arrives?</p>
+      <p class="teaser-cta"><a class="btn btn-ghost" href="./research/">Read the research</a></p>
     </div>
-    <div class="gap">
-      <p><strong>The gap.</strong> No prior work combines a moving device with an on-chain payment that arrival triggers. The demo car proves delivery with a QR code. The research track tests GPS arrival.</p>
-      <ol class="steps-r">
-        <li class="done">Indoor proof of concept</li>
-        <li class="done">Hardware redesign</li>
-        <li>Outdoor GPS tests</li>
-      </ol>
-    </div>
-    <p class="fine">Working draft, September 2026. Supervised by Prof. Dr. Alexandra Mikityuk.</p>
+    <dl class="r-stats">
+      <div><dt>8 s</dt><dd>From delivery trigger to a confirmed Solana transaction. One indoor run, target 15 s.</dd></div>
+      <div><dt>30+</dt><dd>Outdoor GPS test runs planned to prove it.</dd></div>
+      <div><dt>3</dt><dd>Nodes in the next design: one fixed drop point and two mobile carriers.</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ============ MARKET ============ -->
-<section class="market" id="market">
+<section class="teaser team-teaser">
   <div class="wrap">
-    <h2 class="big sm">Machine-payment markets are growing.</h2>
-    <div class="mrows" id="mrows">
-      <div class="mrow" style="--w:22%">
-        <div class="mlabel"><h3>M2M / IoT payments</h3><span>2026 to 2034</span></div>
-        <div class="mbar"><i></i></div>
-        <div class="mval"><b>$11.3B</b><span>to $55B</span></div>
-      </div>
-      <div class="mrow" style="--w:62%">
-        <div class="mlabel"><h3>Agentic AI commerce</h3><span>2026 to 2030</span></div>
-        <div class="mbar"><i></i></div>
-        <div class="mval"><b>$8B</b><span>to $1.5T</span></div>
-      </div>
-      <div class="mrow" style="--w:100%">
-        <div class="mlabel"><h3>DePIN</h3><span>today to forecast</span></div>
-        <div class="mbar"><i></i></div>
-        <div class="mval"><b>~$30B</b><span>to $3.5T</span></div>
-      </div>
-    </div>
-    <p class="fine">Forecasts differ 2–5× between sources. Sources: StartUs Insights, Nevermined, bex.co (2026); RoboPay project paper §15. Bar lengths are illustrative, not to scale.</p>
-  </div>
-</section>
-
-<!-- ============ DEMAND ============ -->
-<section class="demand" id="demand">
-  <div class="wrap">
-    <h2 class="big sm">Would you accept a delivery robot?</h2>
-    <div class="mrows survey" id="survey">
-      <div class="mrow" style="--w:92%"><div class="mlabel"><h3>Want an instant notification</h3></div><div class="mbar"><i></i></div><div class="mval"><b>92%</b></div></div>
-      <div class="mrow" style="--w:86%"><div class="mlabel"><h3>Would pay a premium</h3></div><div class="mbar"><i></i></div><div class="mval"><b>86%</b></div></div>
-      <div class="mrow" style="--w:71%"><div class="mlabel"><h3>Say yes to a delivery robot</h3></div><div class="mbar"><i></i></div><div class="mval"><b>71%</b></div></div>
-      <div class="mrow warn" style="--w:47%"><div class="mlabel"><h3>Find blockchain as safe as their bank</h3></div><div class="mbar"><i></i></div><div class="mval"><b>47%</b></div></div>
-    </div>
-    <p class="fine">38 responses, first round, mostly aged 18–24. The last number is the one we have to earn.</p>
-  </div>
-</section>
-
-<!-- ============ VISION ============ -->
-<section class="vision" id="vision">
-  <div class="wrap">
-    <h2 class="big sm">Any machine that delivers can pay.</h2>
-    <p class="lead">One payment stack, every robot. Cars today. Drones, boats and humanoids next.</p>
-    <ul class="machines">
-      <li class="now"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="20" width="38" height="12" rx="5"/><path d="M14 20 l4 -8 h12 l4 8"/><circle cx="14" cy="34" r="4"/><circle cx="34" cy="34" r="4"/></svg><span>Delivery cars</span><small>Prototype running</small></li>
-      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 14 L34 34 M34 14 L14 34"/><circle cx="12" cy="12" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="12" cy="36" r="5"/><circle cx="36" cy="36" r="5"/><rect x="19" y="19" width="10" height="10" rx="3"/></svg><span>Drones</span><small>Next</small></li>
-      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 30 h36 l-6 10 h-24 z"/><path d="M24 8 v20 M24 10 l12 16 h-12"/></svg><span>Boats</span><small>Next</small></li>
-      <li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="9" r="5"/><path d="M24 15 v16 M12 20 l12 -3 l12 3 M24 31 l-8 13 M24 31 l8 13"/></svg><span>Humanoids</span><small>Next</small></li>
+    <h2 class="big sm">A research group becoming a startup.</h2>
+    <ul class="faces">
+      <li><img src="./assets/kevin.jpg" width="160" height="160" alt="" loading="lazy"><b>Kevin Ehrentraut</b><span>Founder &amp; Technical Lead</span></li>
+      <li><img src="./assets/xinyan.jpg" width="160" height="160" alt="" loading="lazy"><b>Xinyan Liu</b><span>Hardware &amp; Mechatronics</span></li>
+      <li><img src="./assets/yashdeep.jpg" width="160" height="160" alt="" loading="lazy"><b>Yashdeep Singh</b><span>Business &amp; Market Research</span></li>
+      <li><img src="./assets/alexandra.jpg" width="160" height="160" alt="" loading="lazy"><b>Prof. Dr. Alexandra Mikityuk</b><span>Supervisor</span></li>
     </ul>
+    <p class="teaser-cta"><a class="btn btn-ghost" href="./team/">Meet the team</a></p>
   </div>
 </section>
 
-<!-- ============ TEAM ============ -->
-<section class="team" id="team">
-  <div class="wrap">
-    <h2 class="big">A research group becoming a startup.</h2>
-    <p class="lead">RoboPay grows out of the Machine Economy Lab at HTW Berlin. We build the prototype, publish the research and are working toward a company. Built for the Colosseum Crypto World’s Fair.</p>
-    <div class="cards" id="cards">
-      <article class="card">
-        <div class="photo"><img src="assets/kevin.jpg" width="640" height="530" alt="Portrait of Kevin Ehrentraut" loading="lazy"></div>
-        <h3>Kevin Ehrentraut</h3>
-        <p class="role">Founder &amp; Technical Lead</p>
-        <p class="info">
-          <span>Head of Customer Success at Staex</span>
-          <span>Turbin3 DePIN Cohort Q4 2025</span>
-          <span>Superteam Germany Member</span>
-        </p>
-        <ul class="orgs">
-          <li class="org org-staex"><a href="https://staex.io" target="_blank" rel="noopener" aria-label="Staex website"><img src="assets/logos/staex.svg" alt="" width="82" height="26"></a></li>
-          <li class="org org-turbin3"><a href="https://turbin3.com" target="_blank" rel="noopener" aria-label="Turbin3 website"><img src="assets/logos/turbin3.png" alt="" width="26" height="26"><span>Turbin3</span></a></li>
-          <li class="org org-superteam"><a href="https://de.superteam.fun" target="_blank" rel="noopener" aria-label="Superteam Germany website"><img src="assets/logos/superteam-germany.png" alt="" width="30" height="24"><span>Superteam Germany</span></a></li>
-        </ul>
-        <div class="socials"><a class="soc" href="https://x.com/KEBNH123" target="_blank" rel="noopener" aria-label="Kevin Ehrentraut on X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.43 4.7H5.6l11.07 14.5Z"/></svg><span>X</span></a></div>
-      </article>
-      <article class="card">
-        <div class="photo"><img src="assets/xinyan.jpg" width="640" height="530" alt="Portrait of Xinyan Liu" loading="lazy"></div>
-        <h3>Xinyan Liu</h3>
-        <p class="role">Hardware &amp; Mechatronics</p>
-        <p class="info">
-          <span>Industrial Engineering Student</span>
-          <span>Dual Degree: Tongji University &amp; HTW Berlin</span>
-        </p>
-        <ul class="orgs">
-          <li class="org org-htw"><a href="https://www.htw-berlin.de" target="_blank" rel="noopener" aria-label="HTW Berlin website"><img src="assets/logos/htw.svg" alt="" width="52" height="16"></a></li>
-        </ul>
-      </article>
-      <article class="card">
-        <div class="photo"><img src="assets/yashdeep.jpg" width="640" height="530" alt="Portrait of Yashdeep Singh" loading="lazy"></div>
-        <h3>Yashdeep Singh</h3>
-        <p class="role">Business &amp; Market Research</p>
-        <p class="info">
-          <span>Business Development, Hydro Berlin</span>
-          <span>Bachelor Digital Business (BWL)</span>
-          <span>BHT Berlin</span>
-        </p>
-        <ul class="orgs">
-          <li class="org org-bht"><a href="https://www.bht-berlin.de" target="_blank" rel="noopener" aria-label="BHT Berlin website"><img src="assets/logos/bht.svg" alt="" width="108" height="30"></a></li>
-        </ul>
-        <div class="socials"><a class="soc" href="https://x.com/yash__btw" target="_blank" rel="noopener" aria-label="Yashdeep Singh on X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.43 4.7H5.6l11.07 14.5Z"/></svg><span>X</span></a><a class="soc" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener" aria-label="Yashdeep Singh on LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.07c0-1.21-.02-2.77-1.69-2.77-1.69 0-1.95 1.32-1.95 2.68V21h-4V9.75Z"/></svg><span>LinkedIn</span></a></div>
-      </article>
-      <article class="card">
-        <div class="photo"><img src="assets/alexandra.jpg" width="640" height="530" alt="Portrait of Prof. Dr. Alexandra Mikityuk" loading="lazy"></div>
-        <h3>Prof. Dr. Alexandra Mikityuk</h3>
-        <p class="role">Supervisor</p>
-        <p class="info">
-          <span>Professor, HTW Berlin</span>
-          <span>CEO, Staex GmbH</span>
-        </p>
-        <p class="focus">Security, Cryptography, and Trusted Data Infrastructures for the Machine Service Economy</p>
-        <ul class="orgs">
-          <li class="org org-htw"><a href="https://www.htw-berlin.de" target="_blank" rel="noopener" aria-label="HTW Berlin website"><img src="assets/logos/htw.svg" alt="" width="52" height="16"></a></li>
-          <li class="org org-staex"><a href="https://staex.io" target="_blank" rel="noopener" aria-label="Staex website"><img src="assets/logos/staex.svg" alt="" width="82" height="26"></a></li>
-        </ul>
-        <div class="socials"><a class="soc" href="https://x.com/alexandrastaex" target="_blank" rel="noopener" aria-label="Prof. Dr. Alexandra Mikityuk on X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.43 4.7H5.6l11.07 14.5Z"/></svg><span>X</span></a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="faq" id="faq">
-  <div class="wrap faq-grid">
-    <h2 class="big sm">Questions about RoboPay.</h2>
-    <div class="faq-list">
-      <details><summary>What is RoboPay?</summary><p>RoboPay is the payment layer for machines and AI agents in the physical world. A machine gets paid automatically when it proves it did the job, for example when a delivery car arrives.</p></details>
-      <details><summary>How does a delivery robot get paid?</summary><p>The buyer locks 0.2 SOL in an escrow on Solana. The car drives to the box and scans its QR code. It then signs the delivery on-chain, and the escrow releases the money to the car’s owner.</p></details>
-      <details><summary>Why can’t robots use banks or cards?</summary><p>A robot has no bank account, cards are made for people, and a payment alone is not proof that the parcel arrived. RoboPay ties the payment to proof of delivery.</p></details>
-      <details><summary>How does RoboPay prove a delivery?</summary><p>Two layers. The QR handover works on the car today. A letterbox co-signature with a weight sensor is the planned next step and closes the gap of relayed codes. Our research also tests GPS arrival detection as a trigger.</p></details>
-      <details><summary>Which technology does RoboPay use?</summary><p>Solana for escrow payments, peaq for the car’s verifiable Machine-NFT identity, and Staex for secure connectivity.</p></details>
-      <details><summary>Is RoboPay live?</summary><p>It runs on real hardware as a working prototype: a PiCar-X delivery car and a letterbox prototype. Payouts that follow the Machine-NFT owner are built and in testing.</p></details>
-      <details><summary>Who builds RoboPay?</summary><p>A student research group, the Machine Economy Lab at HTW Berlin: Kevin Ehrentraut, Xinyan Liu and Yashdeep Singh, supervised by Prof. Dr. Alexandra Mikityuk. We are working toward a startup.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ NEXT + CTA ============ -->
 <section class="next" id="next">
   <div class="wrap">
     <div class="next-head">
       <h2 class="huge">Machines will pay machines.</h2>
-      <img class="next-logo" src="assets/robopay-logo.webp" width="190" height="190" alt="RoboPay logo: a hub connected to a car, a drone, a robot arm and a chip" loading="lazy">
+      <img class="next-logo" src="./assets/robopay-logo.webp" width="190" height="190" alt="RoboPay logo: a hub connected to a car, a drone, a robot arm and a chip" loading="lazy">
     </div>
-    <ol class="road">
-      <li><b>Payouts follow the Machine-NFT owner</b><span>Built, in testing</span></li>
-      <li><b>Letterbox co-signature with weight sensor</b><span>Next</span></li>
-      <li><b>On-chain fee split and security hardening</b><span>Next</span></li>
-      <li><b>From research group to company</b><span>Goal</span></li>
-    </ol>
     <div class="links">
       <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener"><small>Code</small><b>github.com/kevkaseeker-source/robopay</b></a>
       <a href="https://x.com/R0boPay/status/2108523676870250990" target="_blank" rel="noopener"><small>Proof of concept 1</small><b>x.com/R0boPay/status/2108523676870250990</b></a>
@@ -575,18 +241,31 @@
     </div>
   </div>
 </section>
+
 </main>
 
 <div class="dock" id="dock" aria-label="Quick actions">
   <a class="btn" href="https://x.com/R0boPay/status/2109292459805061144" target="_blank" rel="noopener">Watch the demo</a>
-  <a class="btn btn-ghost" href="#story">How it works</a>
+  <a class="btn btn-ghost" href="./how-it-works/">How it works</a>
 </div>
 
 <footer class="foot">
-  <span>© 2026 RoboPay. A research group of the Machine Economy Lab, HTW Berlin, building toward a startup.</span>
-  <span>Built with Staex, peaq and Solana</span>
+  <div class="foot-main">
+    <p class="foot-brand"><img src="./assets/robopay-logo-96.webp" width="36" height="36" alt=""> <span>RoboPay</span></p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="./how-it-works/">How it works</a>
+      <a href="./research/">Research</a>
+      <a href="./team/">Team</a>
+      <a href="./blog/">Blog</a>
+      <a href="./faq/">FAQ</a>
+      <a href="https://x.com/R0boPay" target="_blank" rel="noopener">X</a>
+      <a href="https://github.com/kevkaseeker-source/robopay" target="_blank" rel="noopener">GitHub</a>
+      <a href="./feed.xml">RSS</a>
+    </nav>
+  </div>
+  <p class="foot-note">© 2026 RoboPay. A research group of the Machine Economy Lab, HTW Berlin, building toward a startup. Built with Staex, peaq and Solana.</p>
 </footer>
 
-<script src="main.js?v=20" defer></script>
+<script src="./main.js?v=53bb0257" defer></script>
 </body>
 </html>
