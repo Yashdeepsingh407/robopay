@@ -76,7 +76,7 @@ def load_posts():
         meta, body = front_matter(read(f))
         fig = ""
         if meta.get("figure") and (ROOT / meta["figure"].lstrip("/")).exists():
-            fig = (f'<figure class="post-figure"><img src="{meta["figure"]}" alt="{esc(meta["figure_alt"])}" loading="lazy">'
+            fig = (f'<figure class="post-figure"><img src="{meta["figure"]}" width="{meta.get("figure_w", "1200")}" height="{meta.get("figure_h", "630")}" alt="{esc(meta["figure_alt"])}" loading="lazy">'
                    f'<figcaption>{meta["figure_caption"]}</figcaption></figure>')
         body = body.replace("{{figure}}", fig)
         meta["body"] = body
