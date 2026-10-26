@@ -178,12 +178,18 @@ def post_card(p, lead=False):
             f'<h3>{p["title"]}</h3><p>{p["description"]}</p><span class="more">Read the story</span></div></a></article>')
 
 
+def cover_html(p):
+    src, w, h = p.get("hero", p["image"]), p.get("hero_w", "1200"), p.get("hero_h", "630")
+    alt = esc(p.get("hero_alt", p["image_alt"]))
+    cap = f'<figcaption>{p["hero_caption"]}</figcaption>' if p.get("hero_caption") else ""
+    return f'<figure class="post-cover"><img src="{src}" width="{w}" height="{h}" alt="{alt}">{cap}</figure>'
+
+
 def latest_post_html(posts):
     cards = "\n".join(post_card(p) for p in posts[:3])
     return ('<section class="news" id="blog" aria-label="Blog"><div class="wrap">\n'
-            '<h2 class="big sm">From the blog.</h2>\n'
-            f'<div class="news-list">\n{cards}\n</div>\n'
-            '<p class="news-all"><a class="btn btn-ghost" href="/blog/">All posts</a></p></div></section>')
+            '<div class="news-head"><h2 class="news-title">From the blog</h2><a class="news-all" href="/blog/">All posts</a></div>\n'
+            f'<div class="news-list">\n{cards}\n</div></div></section>')
 
 
 def posts_list_html(posts):
@@ -236,7 +242,7 @@ def main():
         body = (f'<article class="post"><header class="post-head"><div class="wrap">'
                 f'<nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a></nav>'
                 f'<p class="post-date">{date_h}</p><h1 class="big">{p["title"]}</h1><p class="lead">{p["description"]}</p></div></header>'
-                f'<div class="wrap"><figure class="post-cover"><img src="{p["image"]}" width="1200" height="630" alt="{esc(p["image_alt"])}"></figure>'
+                f'<div class="wrap">{cover_html(p)}'
                 f'<div class="post-body">\n{p["body"]}\n</div>'
                 f'<p class="post-back"><a href="/blog/">All posts</a></p></div></article>\n'
                 + include("{{include:closing}}"))
