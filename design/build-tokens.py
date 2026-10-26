@@ -13,9 +13,10 @@ for group, items in data.items():
             continue
         name = f"--{group}-{k}" if group != "z" else f"--z-{k}-i"
         lines.append(f"  {name}: {v};")
-lines.append("  /* legacy names used by style.css */")
-for k, v in data["aliases"].items():
-    lines.append(f"  {k}: {v};")
+if data.get("aliases"):
+    lines.append("  /* aliases */")
+    for k, v in data["aliases"].items():
+        lines.append(f"  {k}: {v};")
 lines.append("}")
 (root.parent / "tokens.css").write_text("\n".join(lines) + "\n")
 print("tokens.css written:", len(lines), "lines")

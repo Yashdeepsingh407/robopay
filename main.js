@@ -5,51 +5,40 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const ease = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const C = { concrete: css('--color-concrete'), paper: css('--color-paper'), ink: css('--color-ink'), signal: css('--color-signal'), paid: css('--color-paid') };
 
   document.documentElement.classList.add('js');
 
-  /* ---------- hero entrance (single orchestrated moment) ---------- */
-  requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('is-ready')));
-
   /* ---------- bottom action bar (thumb zone) ---------- */
-  const dock = $('#dock'), hideDock = new Set();
-  new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? hideDock.add(e.target.id) : hideDock.delete(e.target.id); onScroll(); }), { threshold: .1 })
-    .observe($('#next'));
+  const dock = $('#dock');
+  let nearEnd = false;
+  new IntersectionObserver(([e]) => { nearEnd = e.isIntersecting; onScroll(); }, { threshold: .1 }).observe($('#next'));
 
-  /* ---------- nav + progress ---------- */
-  const nav = $('#nav'), bar = $('#progressBar');
-  let ticking = false, docMax = 1;
-  const measure = () => { docMax = document.documentElement.scrollHeight - innerHeight; measureStory(); };
+  let ticking = false;
   const frame = () => {
     ticking = false;
-    const y = scrollY;
-    bar.style.width = (docMax > 0 ? (y / docMax) * 100 : 0) + '%';
-    nav.classList.toggle('stuck', y > 40);
-    story(y);
-    dock.classList.toggle('show', y > innerHeight * .7 && !hideDock.size);
+    story(scrollY);
+    dock.classList.toggle('show', scrollY > innerHeight * .7 && !nearEnd);
   };
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
 
-  /* ---------- hero canvas ---------- */
+  /* ---------- hero scene: flat, one loop ---------- */
   const cv = $('#heroCanvas'), ctx = cv.getContext('2d');
   const hero = $('#hero');
-  const chips = $$('#heroStatus .chip');
-  let W = 0, H = 0, dpr = 1, mouseX = .5, buildings = [], stars = [];
-  const rnd = (seed => () => (seed = (seed * 16807) % 2147483647) / 2147483647)(7);
+  let W = 0, H = 0, dpr = 1, blocks = [];
+  const rnd = (seed => () => (seed = (seed * 16807) % 2147483647) / 2147483647)(11);
 
   function build() {
-    buildings = [];
-    [[.28, .5, '#0a1530'], [.45, .8, '#0c1a3a'], [.7, 1.3, '#102248']].forEach(([hh, sp, col], li) => {
-      let x = -40;
-      while (x < W + 80) {
-        const w = (28 + rnd() * 70) * (1 + li * .2), h = H * (hh * .35 + rnd() * hh * .5);
-        const wins = [];
-        for (let i = 0; i < w / 14; i++) for (let j = 0; j < h / 20; j++) if (rnd() > .86) wins.push([i * 14 + 6, j * 20 + 8, rnd() * 6]);
-        buildings.push({ x, w, h, col, sp, wins, li });
-        x += w + rnd() * 12;
+    blocks = [];
+    [[.24, '#d6d8d4'], [.38, '#d0d2ce']].forEach(([hh, col], li) => {
+      let x = -30;
+      while (x < W + 60) {
+        const w = 46 + rnd() * 80, h = H * (hh * .45 + rnd() * hh * .55);
+        blocks.push({ x, w, h, col, li });
+        x += w + (li ? 6 : 14);
       }
     });
-    stars = Array.from({ length: 90 }, () => ({ x: rnd(), y: rnd() * .55, r: rnd() * 1.4 + .3, p: rnd() * 6 }));
   }
   function resize() {
     dpr = Math.min(devicePixelRatio || 1, innerWidth < 700 ? 1.5 : 2);
@@ -59,7 +48,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     build();
   }
-  addEventListener('resize', resize);
+  addEventListener('resize', () => { resize(); measure(); onScroll(); });
   resize();
 
   const bez = (p0, p1, p2, p3, t) => {
@@ -70,160 +59,114 @@
     };
   };
   const coins = [];
-  let pulse = -1, lastPhase = '';
-
-  function setChip(k) { chips.forEach(c => c.classList.toggle('on', c.dataset.s === k)); }
+  let lastBurst = -1;
 
   function drawHero(now) {
     const t = now / 1000;
     ctx.clearRect(0, 0, W, H);
     const mob = W < 700;
-    const horizon = H * (mob ? .8 : .74);
+    const horizon = H * (mob ? .8 : .76);
 
-    // stars
-    stars.forEach(s => {
-      ctx.globalAlpha = .35 + .35 * Math.sin(t * 1.3 + s.p);
-      ctx.fillStyle = '#9fc4ff';
-      ctx.fillRect(s.x * W, s.y * H, s.r, s.r);
+    // skyline: two flat layers, windows cut out of the facade
+    blocks.forEach(b => {
+      const y = horizon - b.h;
+      ctx.fillStyle = b.col; ctx.fillRect(b.x, y, b.w, b.h + 2);
+      if (b.li) {
+        ctx.fillStyle = C.concrete;
+        for (let wx = 10; wx < b.w - 12; wx += 18) for (let wy = 12; wy < b.h - 8; wy += 26) ctx.fillRect(b.x + wx, y + wy, 8, 12);
+      }
     });
-    ctx.globalAlpha = 1;
-
-    // skyline, parallax
-    buildings.forEach(b => {
-      const ox = (mouseX - .5) * -28 * b.sp;
-      const x = b.x + ox, y = horizon - b.h * (1 - b.li * .08) + b.li * 8;
-      ctx.fillStyle = b.col;
-      ctx.fillRect(x, y, b.w, horizon - y + 40);
-      if (b.li > 0) b.wins.forEach(w => {
-        const on = .35 + .65 * Math.max(0, Math.sin(t * .8 + w[2]));
-        ctx.fillStyle = `rgba(255,226,150,${.08 + on * .35})`;
-        ctx.fillRect(x + w[0], y + w[1], 5, 8);
-      });
-    });
-
-    // ground
-    const g = ctx.createLinearGradient(0, horizon, 0, H);
-    g.addColorStop(0, '#08102a'); g.addColorStop(1, '#04060b');
-    ctx.fillStyle = g; ctx.fillRect(0, horizon, W, H - horizon);
+    ctx.fillStyle = '#dcdedb'; ctx.fillRect(0, horizon, W, H - horizon);
+    ctx.fillStyle = C.ink; ctx.fillRect(0, horizon, W, 2);
 
     // road
-    const p0 = { x: -W * .05, y: H * .97 }, p1 = { x: W * .3, y: H * (mob ? .86 : .8) }, p2 = { x: W * .58, y: H * 1 }, p3 = { x: W * (mob ? .8 : .86), y: horizon + H * .035 };
-    ctx.lineCap = 'round';
+    const p0 = { x: -W * .05, y: H * .97 }, p1 = { x: W * .3, y: H * (mob ? .88 : .82) }, p2 = { x: W * .58, y: H }, p3 = { x: W * (mob ? .78 : .84), y: horizon + H * .04 };
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
-    ctx.strokeStyle = '#111c3d'; ctx.lineWidth = 22; ctx.stroke();
+    ctx.strokeStyle = C.ink; ctx.lineWidth = mob ? 22 : 30; ctx.stroke();
+    ctx.setLineDash([16, 18]); ctx.lineDashOffset = reduce ? 0 : -t * 22;
+    ctx.strokeStyle = C.signal; ctx.lineWidth = 3; ctx.stroke(); ctx.setLineDash([]);
 
-    // timeline: drive 6.4s, scan .7, burst 1.8, rest 1.1
+    // timeline: drive 6.4s, scan .7, pay 1.8, rest 1.1
     const D = 6.4, S = .7, B = 1.8, R = 1.1, L = D + S + B + R;
     const k = reduce ? D + S + B * .5 : t % L;
-    const prog = clamp(k / D);
-    const e = ease(prog);
-    const phase = k < D ? 'moving' : k < D + S + B ? 'done' : 'locked';
-    if (phase !== lastPhase) { setChip(k < .05 || k >= D + S + B ? 'locked' : phase); lastPhase = phase; }
-    if (k < .5 || k > D + S + B) setChip('locked');
-    else if (k < D) setChip('moving');
-    else setChip('done');
+    const e = ease(clamp(k / D));
+    const paidNow = k > D + S;
 
-    // lit road up to car
-    ctx.save();
-    ctx.shadowColor = '#46e3ff'; ctx.shadowBlur = mob ? 0 : 16;
-    ctx.beginPath();
-    const steps = 60;
-    for (let i = 0; i <= steps * e; i++) { const p = bez(p0, p1, p2, p3, i / steps); i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
-    const lg = ctx.createLinearGradient(p0.x, 0, p3.x, 0);
-    lg.addColorStop(0, 'rgba(70,227,255,0)'); lg.addColorStop(.6, '#46e3ff'); lg.addColorStop(1, '#7c5cff');
-    ctx.strokeStyle = lg; ctx.lineWidth = 4; ctx.stroke();
-    ctx.restore();
-
-    // house + QR box at the end
-    const hx = p3.x + 12, hy = p3.y - 6, hs = mob ? .75 : 1;
+    // house with the QR box
+    const hs = mob ? .75 : 1, hx = p3.x + 16 * hs, hy = p3.y - 8;
     ctx.save(); ctx.translate(hx, hy); ctx.scale(hs, hs);
-    ctx.fillStyle = '#0f1c40'; ctx.strokeStyle = '#46e3ff'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(-34, 0); ctx.lineTo(-34, -42); ctx.lineTo(0, -68); ctx.lineTo(34, -42); ctx.lineTo(34, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = k > D + S ? '#14f195' : '#e8eefc'; ctx.fillRect(-9, -26, 18, 18);
-    ctx.fillStyle = '#04060b'; ctx.fillRect(-6, -23, 5, 5); ctx.fillRect(1, -23, 5, 5); ctx.fillRect(-6, -16, 5, 5); ctx.fillRect(2, -15, 3, 3);
+    ctx.fillStyle = C.paper; ctx.strokeStyle = C.ink; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(-36, 0); ctx.lineTo(-36, -44); ctx.lineTo(0, -72); ctx.lineTo(36, -44); ctx.lineTo(36, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = paidNow ? C.paid : C.paper; ctx.fillRect(-11, -30, 22, 22); ctx.strokeRect(-11, -30, 22, 22);
+    ctx.fillStyle = paidNow ? C.paper : C.ink;
+    ctx.fillRect(-8, -27, 6, 6); ctx.fillRect(2, -27, 6, 6); ctx.fillRect(-8, -17, 6, 6); ctx.fillRect(3, -16, 4, 4);
     ctx.restore();
 
     // car
-    const cp = bez(p0, p1, p2, p3, e), cq = bez(p0, p1, p2, p3, Math.min(1, e + .01));
+    const stop = .88;                              // the car halts in front of the house
+    const cp = bez(p0, p1, p2, p3, e * stop), cq = bez(p0, p1, p2, p3, Math.min(1, e * stop + .01));
     const ang = Math.atan2(cq.y - cp.y, cq.x - cp.x);
-    const cs = mob ? .85 : 1.25;
-    ctx.save(); ctx.translate(cp.x, cp.y - 12 * cs); ctx.rotate(ang); ctx.scale(cs, cs);
-    // headlight cone
-    const hl = ctx.createLinearGradient(22, 0, 120, 0);
-    hl.addColorStop(0, 'rgba(255,255,230,.45)'); hl.addColorStop(1, 'rgba(255,255,230,0)');
-    ctx.fillStyle = hl; ctx.beginPath(); ctx.moveTo(22, -2); ctx.lineTo(120, -26); ctx.lineTo(120, 24); ctx.closePath(); ctx.fill();
-    ctx.shadowColor = '#46e3ff'; ctx.shadowBlur = mob ? 0 : 18;
-    ctx.fillStyle = '#e8eefc'; ctx.beginPath(); ctx.roundRect(-24, -8, 48, 16, 6); ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = '#9fb4e8'; ctx.beginPath(); ctx.moveTo(-10, -8); ctx.lineTo(-5, -17); ctx.lineTo(8, -17); ctx.lineTo(13, -8); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = '#04060b'; ctx.strokeStyle = '#46e3ff'; ctx.lineWidth = 2;
+    const cs = mob ? 1.1 : 1.75;
+    ctx.save(); ctx.translate(cp.x, cp.y - 16 * cs); ctx.rotate(ang); ctx.scale(cs, cs);
+    ctx.lineWidth = 2.2; ctx.strokeStyle = C.ink;
+    ctx.fillStyle = C.paper; ctx.beginPath(); ctx.rect(-8, -25, 15, 9); ctx.fill(); ctx.stroke();           // parcel on the roof
+    ctx.fillStyle = C.paper; ctx.beginPath(); ctx.moveTo(-10, -8); ctx.lineTo(-5, -17); ctx.lineTo(8, -17); ctx.lineTo(13, -8); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.signal; ctx.beginPath(); ctx.roundRect(-24, -8, 48, 16, 5); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.ink; ctx.strokeStyle = C.paper;
     [-14, 14].forEach(wx => { ctx.beginPath(); ctx.arc(wx, 9, 5.5, 0, 7); ctx.fill(); ctx.stroke(); });
     ctx.restore();
 
-    // floating label: money locked → delivered
-    const lx = cp.x, ly = cp.y - 62 * (cs / 1.25) - 10;
-    const lab = phase === 'done' && k > D + S ? 'Delivered' : '0.2 SOL locked';
-    ctx.font = '600 13px "Instrument Sans", sans-serif';
-    const tw = ctx.measureText(lab).width + 24;
-    ctx.fillStyle = 'rgba(10,18,40,.85)'; ctx.strokeStyle = lab === 'Delivered' ? '#14f195' : 'rgba(124,92,255,.8)'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.roundRect(lx - tw / 2, ly - 14, tw, 28, 14); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = lab === 'Delivered' ? '#14f195' : '#d6ccff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(lab, lx, ly);
+    // price tag on the car: locked, then paid
+    const ly = cp.y - 78 * (cs / 1.4) - 8;
+    const lab = paidNow ? 'Paid' : '0.2 SOL locked';
+    ctx.font = '700 14px Archivo, sans-serif';
+    const tw = ctx.measureText(lab).width + 26;
+    const lx = clamp(cp.x, tw / 2 + 10, W - tw / 2 - 10);
+    ctx.fillStyle = paidNow ? C.paid : C.paper; ctx.strokeStyle = paidNow ? C.paid : C.ink; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.roundRect(lx - tw / 2, ly - 15, tw, 30, 4); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = paidNow ? C.paper : C.ink; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(lab, lx, ly + 1);
 
-    // scan flash
-    if (k > D && k < D + S) {
-      const a = (k - D) / S;
-      ctx.fillStyle = `rgba(20,241,149,${.35 * Math.sin(a * Math.PI)})`;
-      ctx.beginPath(); ctx.moveTo(cp.x + 20, cp.y - 22); ctx.lineTo(hx, hy - 26 * hs - 14); ctx.lineTo(hx, hy - 8); ctx.closePath(); ctx.fill();
-    }
-    // payout burst
-    if (k >= D + S && !coins.length && lastBurst !== Math.floor(t / L)) {
-      lastBurst = Math.floor(t / L); pulse = t;
-      for (let i = 0; i < 26; i++) coins.push({ x: lx, y: ly, vx: (Math.random() * 2 - .2) * 3.2 + 1, vy: -Math.random() * 6 - 1, life: 1 });
-    }
-    if (pulse > 0 && t - pulse < 1.6) {
-      const a = (t - pulse) / 1.6;
-      ctx.strokeStyle = `rgba(20,241,149,${1 - a})`; ctx.lineWidth = 3;
-      ctx.beginPath(); ctx.arc(hx, hy - 20, 20 + a * 150, 0, 7); ctx.stroke();
+    // payout: three coins hop from the tag to the house
+    if (!reduce && k >= D + S && lastBurst !== Math.floor(t / L) && !coins.length) {
+      lastBurst = Math.floor(t / L);
+      for (let i = 0; i < 3; i++) coins.push({ t0: t + i * .18, x0: lx, y0: ly, x1: hx, y1: hy - 40 * hs });
     }
     for (let i = coins.length - 1; i >= 0; i--) {
-      const c = coins[i];
-      c.vy += .18; c.x += c.vx; c.y += c.vy; c.life -= .012;
-      if (c.life <= 0) { coins.splice(i, 1); continue; }
-      ctx.globalAlpha = c.life; ctx.fillStyle = '#14f195'; ctx.shadowColor = '#14f195'; ctx.shadowBlur = mob ? 0 : 12;
-      ctx.beginPath(); ctx.arc(c.x, c.y, 4.5, 0, 7); ctx.fill();
+      const c = coins[i], u = (t - c.t0) / 1.1;
+      if (u >= 1) { coins.splice(i, 1); continue; }
+      if (u < 0) continue;
+      const x = lerp(c.x0, c.x1, u), y = lerp(c.y0, c.y1, u) - Math.sin(u * Math.PI) * 60;
+      ctx.globalAlpha = u > .85 ? (1 - u) / .15 : 1;
+      ctx.fillStyle = C.signal; ctx.strokeStyle = C.ink; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, y, 6, 0, 7); ctx.fill(); ctx.stroke();
     }
-    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    ctx.globalAlpha = 1;
   }
-  let lastBurst = -1;
   let heroVisible = true;
   new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }, { threshold: 0 }).observe(hero);
   function loop(now) {
     if (heroVisible && !document.hidden) drawHero(now);
-    requestAnimationFrame(loop);
+    if (!reduce) requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
-  hero.addEventListener('pointermove', e => {
-    const r = hero.getBoundingClientRect();
-    mouseX = (e.clientX - r.left) / r.width;
-    hero.querySelector('.hero-spot').style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    hero.querySelector('.hero-spot').style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
+  if (document.fonts) document.fonts.ready.then(() => drawHero(performance.now()));
 
   /* ---------- scroll story ---------- */
-  const storyEl = $('#story'), scene = $('#scene');
+  const storyEl = $('#story');
   const route = $('#route'), car = $('#car'), routeLit = $('#routeLit');
   const routeLen = route.getTotalLength();
   routeLit.style.strokeDasharray = routeLen;
   const coinEls = $$('#coins .coin');
-  const stepEls = $$('#steps li'), statusChips = $$('#storyStatus .chip');
-  const linkA = $('#linkA'), linkB = $('#linkB'), glow = $('.escrow-glow'), hex = $('#hex'), shackle = $('#shackle');
+  const stepEls = $$('#steps li'), statusTags = $$('#storyStatus .tag');
+  const linkA = $('#linkA'), linkB = $('#linkB'), hex = $('#hex'), shackle = $('#shackle');
   const beam = $('#beamShape'), sig = $('#sig'), amt = $('#amt');
   const SIG = 'sig 3246eKTqKGB8GAwdfZsYPGWRZggT87…GPW3#CKSZ6nF';
   const B = { buyer: [110, 150], esc: [500, 110], owner: [890, 150] };
   let lastStep = -1;
 
-  const pt = (p) => route.getPointAtLength(p * routeLen);
+  const pt = p => route.getPointAtLength(p * routeLen);
   function placeCoin(el, from, to, t, arc = -50) {
     const x = lerp(from[0], to[0], t), y = lerp(from[1], to[1], t) + Math.sin(t * Math.PI) * arc;
     el.setAttribute('cx', x); el.setAttribute('cy', y);
@@ -231,109 +174,65 @@
   }
 
   let storyTop = 0, storyTotal = 1;
-  function measureStory() { storyTop = storyEl.getBoundingClientRect().top + scrollY; storyTotal = storyEl.offsetHeight - innerHeight; }
+  function measure() { storyTop = storyEl.getBoundingClientRect().top + scrollY; storyTotal = storyEl.offsetHeight - innerHeight; }
   function story(y = scrollY) {
     const p = clamp((y - storyTop) / storyTotal);
-    // phases
     const A = clamp(p / .16);                      // coins buyer -> escrow
     const drive = ease(clamp((p - .16) / .54));    // car
     const scan = clamp((p - .7) / .14);            // scan
     const conf = clamp((p - .82) / .1);            // signature
     const pay = clamp((p - .92) / .08);            // payout
 
-    // car
     const cp = pt(drive), cq = pt(Math.min(1, drive + .004));
     const ang = Math.atan2(cq.y - cp.y, cq.x - cp.x) * 180 / Math.PI;
     car.setAttribute('transform', `translate(${cp.x} ${cp.y - 14}) rotate(${ang})`);
     routeLit.style.strokeDashoffset = routeLen * (1 - drive);
     routeLit.style.opacity = p > .16 ? 1 : 0;
 
-    // coins
     coinEls.forEach((c, i) => {
       if (pay > 0) placeCoin(c, B.esc, B.owner, clamp(pay * 1.4 - i * .2), -70);
       else if (A < 1) placeCoin(c, B.buyer, B.esc, clamp(A * 1.5 - i * .25), -70);
       else c.style.opacity = 0;
     });
 
-    // links, glow, states
     linkA.classList.toggle('lit', p > .02);
     linkB.classList.toggle('lit', pay > 0);
     const paid = pay > .5;
-    glow.setAttribute('opacity', p > .16 && !paid ? .9 : paid ? .4 : 0);
     hex.classList.toggle('paid', paid);
     shackle.setAttribute('d', p > .1 ? 'M-8 -6 v-7 a8 8 0 0 1 16 0 v7' : 'M-8 -6 v-7 a8 8 0 0 1 16 0 v-0');
     amt.textContent = paid ? 'Released' : '0.2 SOL';
-    amt.style.fill = paid ? 'var(--mint)' : '';
+    amt.classList.toggle('paid', paid);
 
-    // scan beam at the box
-    beam.setAttribute('opacity', scan > 0 && conf < 1 ? Math.sin(scan * Math.PI) * .9 + .1 : 0);
+    beam.setAttribute('opacity', scan > 0 && conf < 1 ? Math.sin(scan * Math.PI) * .7 + .1 : 0);
     beam.setAttribute('transform', `translate(${cp.x + 22} ${cp.y - 16}) rotate(${Math.atan2(470 - cp.y, 880 - cp.x) * 180 / Math.PI}) scale(.55)`);
     beam.style.display = scan > 0 ? '' : 'none';
 
-    // signature
     sig.textContent = SIG.slice(0, Math.floor(conf * SIG.length));
 
-    // step + status
     const step = p < .16 ? 0 : p < .7 ? 1 : p < .82 ? 2 : p < .92 ? 3 : 4;
     if (step !== lastStep) {
       stepEls.forEach((li, i) => { li.classList.toggle('now', i === step); li.classList.toggle('past', i < step); });
       lastStep = step;
     }
     const status = step === 0 ? 'locked' : step < 4 ? 'moving' : 'done';
-    const sTrue = p < .02 ? 'locked' : status;
-    statusChips.forEach(c => c.classList.toggle('on', c.dataset.s === (step === 0 ? 'locked' : sTrue)));
+    statusTags.forEach(c => c.classList.toggle('on', c.dataset.s === status));
   }
 
-  /* ---------- reveal once: problem icons, bars, rings ---------- */
+  /* ---------- bars fill once when they scroll into view ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
-    const el = e.target; io.unobserve(el);
-    if (el.matches('.pr-list li')) el.classList.add('seen');
-    if (el.matches('.mrow')) el.querySelector('i').style.width = el.dataset.w + '%';
-    if (el.matches('.ring')) {
-      const v = +el.dataset.v;
-      el.querySelector('.rv').style.strokeDashoffset = 100 - v;
-      const b = el.querySelector('b'), t0 = performance.now();
-      const tick = n => { const k = clamp((n - t0) / 1800); b.textContent = Math.round(v * (1 - Math.pow(1 - k, 3))) + '%'; if (k < 1) requestAnimationFrame(tick); };
-      requestAnimationFrame(tick);
-    }
-  }), { threshold: .35 });
-  $$('.pr-list li, .mrow, .ring').forEach(el => io.observe(el));
+    e.target.classList.add('seen'); io.unobserve(e.target);
+  }), { threshold: .4 });
+  $$('.mrow').forEach(el => io.observe(el));
 
-  /* ---------- proof layers + team tilt ---------- */
-  const layers = $('#layers');
-  if (layers && matchMedia('(hover:hover)').matches) {
-    layers.addEventListener('pointermove', e => {
-      const r = layers.getBoundingClientRect();
-      layers.style.setProperty('--rx', (18 + ((e.clientY - r.top) / r.height - .5) * -10) + 'deg');
-      layers.style.setProperty('--rz', (-4 + ((e.clientX - r.left) / r.width - .5) * 6) + 'deg');
-    });
-  }
-  if (matchMedia('(hover:hover)').matches && !reduce) {
-    $$('.card').forEach(c => {
-      c.addEventListener('pointermove', e => {
-        const r = c.getBoundingClientRect();
-        c.style.setProperty('--ty', (((e.clientX - r.left) / r.width - .5) * 12) + 'deg');
-        c.style.setProperty('--tx', (((e.clientY - r.top) / r.height - .5) * -12) + 'deg');
-      });
-      c.addEventListener('pointerleave', () => { c.style.setProperty('--tx', '0deg'); c.style.setProperty('--ty', '0deg'); });
-    });
-  }
-
-  /* ---------- mobile menu + tap on proof layers ---------- */
+  /* ---------- mobile menu ---------- */
   const menuBtn = $('#menuBtn'), navLinks = $('#navLinks');
   const setMenu = open => { navLinks.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
   menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-  if (layers) {
-    const toggle = () => layers.classList.toggle('lift');
-    layers.addEventListener('click', toggle);
-    layers.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-  }
 
   addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', () => { measure(); onScroll(); });
   addEventListener('load', () => { measure(); onScroll(); });
   measure(); frame();
 })();
