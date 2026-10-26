@@ -226,6 +226,7 @@ h2.huge { font-size: clamp(2.8rem, 8vw, 7rem); max-width: 11ch; }
 .foot-links { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
 .foot-links a { color: var(--color-text-2); text-decoration: none; padding: .35rem 0; }
 .foot-links a:hover { color: var(--color-text); text-decoration: underline; }
+.foot-credits { display: flex; flex-wrap: wrap; gap: .25rem 2rem; margin: 0; color: var(--color-text); font-weight: 600; }
 .foot-note { margin: 0; font-size: .85rem; max-width: 60rem; }
 
 /* ---------- pages ---------- */
@@ -246,6 +247,13 @@ main > section:first-child:not(.hero):not(.story) { padding-top: calc(var(--spac
 .faces img { width: min(100%, 200px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: 50% 18%; margin-bottom: .9rem; background: var(--color-surface-2); border: 2px solid var(--color-line); }
 .faces b { font-weight: 700; font-size: 1.1rem; letter-spacing: -.02em; }
 .faces span { color: var(--color-text-2); font-size: .9rem; }
+
+/* ---------- powered by / partners ---------- */
+.partners { background: var(--color-bg); border-top: 1px solid var(--color-line); padding-block: clamp(40px, 6vw, 72px); }
+.partners-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+.partners-h { font-size: 1rem; font-weight: 700; letter-spacing: 0; color: var(--color-text-2); }
+.partners .orgs { padding: 1rem 0 0; }
+.org-solana img { height: 22px; } .org-peaq img { height: 26px; }
 
 /* ---------- follow on X ---------- */
 .follow { background: var(--color-surface); }
@@ -328,7 +336,7 @@ main > section:first-child:not(.hero):not(.story) { padding-top: calc(var(--spac
   .steps li:not(.now) { position: absolute; visibility: hidden; pointer-events: none; height: 0; padding: 0; overflow: hidden; }
   .story-status { margin-top: .75rem; }
 
-  .pr-list li, .layers, .r-grid, .gap, .faq-grid, .links, .teaser-grid, .follow-grid { grid-template-columns: 1fr; }
+  .pr-list li, .layers, .r-grid, .gap, .faq-grid, .links, .teaser-grid, .follow-grid, .partners-grid { grid-template-columns: 1fr; }
   .faces { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .x-card { grid-template-columns: 1fr; }
   .faces img { width: min(100%, 160px); }
