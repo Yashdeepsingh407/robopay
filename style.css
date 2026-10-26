@@ -248,10 +248,10 @@ main > section:first-child:not(.hero):not(.story) { padding-top: calc(var(--spac
 .faces span { color: var(--color-text-2); font-size: .9rem; }
 
 /* ---------- blog ---------- */
-.news { background: var(--color-surface); padding-block: clamp(40px, 6vw, 72px); border-top: 1px solid var(--color-line); }
-.news-h { font-size: 1rem; font-weight: 700; letter-spacing: 0; color: var(--color-text-2); margin-bottom: 1.25rem; }
-.news-all { margin-top: 1rem; }
-.news-all a { font-weight: 600; color: var(--color-accent); }
+.news { background: var(--color-bg); border-top: 1px solid var(--color-line); }
+.news-list { display: grid; gap: 1.5rem; margin-top: 3rem; }
+.news-all { margin-top: 2rem; }
+.news .post-card a { background: var(--color-surface); }
 .post-list { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
 .post-card a { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(20px, 3vw, 40px); align-items: center; text-decoration: none; border: 1px solid var(--color-line); border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg); transition: border-color var(--motion-fast); }
 .post-card a:hover { border-color: var(--color-accent); }

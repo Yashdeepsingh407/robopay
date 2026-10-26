@@ -179,10 +179,11 @@ def post_card(p, lead=False):
 
 
 def latest_post_html(posts):
-    p = posts[0]
-    return ('<section class="news" aria-label="Latest news"><div class="wrap">\n'
-            f'<h2 class="news-h">Latest from the blog</h2>\n{post_card(p)}\n'
-            '<p class="news-all"><a href="/blog/">All posts</a></p></div></section>')
+    cards = "\n".join(post_card(p) for p in posts[:3])
+    return ('<section class="news" id="blog" aria-label="Blog"><div class="wrap">\n'
+            '<h2 class="big sm">From the blog.</h2>\n'
+            f'<div class="news-list">\n{cards}\n</div>\n'
+            '<p class="news-all"><a class="btn btn-ghost" href="/blog/">All posts</a></p></div></section>')
 
 
 def posts_list_html(posts):
