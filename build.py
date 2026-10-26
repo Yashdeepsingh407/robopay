@@ -13,6 +13,8 @@ import html
 import json
 import pathlib
 import re
+import sys
+import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "src"
@@ -46,6 +48,10 @@ PAGES = [
 ]
 
 ORG_ID = SITE + "/#org"
+X_HANDLE = "R0boPay"
+X_TXT = SRC / "data" / "x-posts.txt"
+X_JSON = SRC / "data" / "x-posts.json"
+
 
 
 def read(p):
@@ -84,6 +90,49 @@ def load_posts():
         posts.append(meta)
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
+
+
+def refresh_x():
+    """Fetch the posts listed in src/data/x-posts.txt (via the fxtwitter API) and cache text, date and preview image."""
+    ids = [re.search(r"(\d{10,})", l).group(1) for l in X_TXT.read_text().splitlines() if l.strip() and not l.startswith("#")]
+    out = []
+    (ROOT / "assets" / "x").mkdir(parents=True, exist_ok=True)
+    ua = {"User-Agent": "Mozilla/5.0"}
+    for i in ids:
+        with urllib.request.urlopen(urllib.request.Request(f"https://api.fxtwitter.com/{X_HANDLE}/status/{i}", headers=ua), timeout=30) as r:
+            t = json.load(r)["tweet"]
+        media = t.get("media") or {}
+        src = (media.get("photos") or [{}])[0].get("url") or (media.get("videos") or [{}])[0].get("thumbnail_url")
+        thumb = None
+        if src:
+            thumb = f"/assets/x/{i}.jpg"
+            with urllib.request.urlopen(urllib.request.Request(src, headers=ua), timeout=30) as r:
+                (ROOT / thumb.lstrip("/")).write_bytes(r.read())
+        when = datetime.datetime.strptime(t["created_at"], "%a %b %d %H:%M:%S %z %Y")
+        out.append(dict(id=i, url=t["url"], text=t["text"], iso=when.date().isoformat(), ts=when.isoformat(), thumb=thumb,
+                        video=bool(media.get("videos"))))
+    out.sort(key=lambda p: p["ts"], reverse=True)
+    X_JSON.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"refreshed {len(out)} X post(s)")
+
+
+def x_cards_html():
+    if not X_JSON.exists():
+        return ""
+    cards = []
+    for p in json.loads(X_JSON.read_text(encoding="utf-8"))[:3]:
+        text = " ".join(p["text"].split())
+        if len(text) > 230:
+            text = text[:230].rsplit(" ", 1)[0] + "…"
+        img = ""
+        if p.get("thumb"):
+            play = '<span class="x-play" aria-hidden="true"></span>' if p.get("video") else ""
+            img = (f'<a class="x-thumb" href="{p["url"]}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'
+                   f'<img src="{p["thumb"]}" width="640" height="360" alt="" loading="lazy">{play}</a>')
+        cards.append(f'<article class="x-card">{img}<div class="x-body"><p class="x-meta"><b>RoboPay</b> <span>@{X_HANDLE}</span>'
+                     f' <time datetime="{p["iso"]}">{pretty_date(p["iso"])}</time></p><p class="x-text">{esc(text)}</p>'
+                     f'<a class="x-link" href="{p["url"]}" target="_blank" rel="noopener">View on X</a></div></article>')
+    return '<div class="x-cards">\n' + "\n".join(cards) + "\n</div>"
 
 
 def esc(s):
@@ -221,11 +270,13 @@ def write(path, text):
 
 
 def main():
+    if "--refresh-x" in sys.argv:
+        refresh_x()
     posts = load_posts()
     urls = []
     for pg in PAGES:
         body = include(read(SRC / "pages" / f"{pg['src']}.html"))
-        body = body.replace("{{latest_post}}", latest_post_html(posts)).replace("{{posts_list}}", posts_list_html(posts))
+        body = body.replace("{{x_cards}}", x_cards_html()).replace("{{latest_post}}", latest_post_html(posts)).replace("{{posts_list}}", posts_list_html(posts))
         if pg["key"] != "home":
             body = first_h2_to_h1(body)
         ld = [org_ld(), site_ld(), code_ld()] if pg["key"] == "home" else [org_ld()]

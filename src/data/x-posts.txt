@@ -1,0 +1,4 @@
+# Posts shown in "Follow us on X" (newest are sorted first). One link or ID per line.
+# After adding a line run: python3 build.py --refresh-x
+https://x.com/R0boPay/status/2109292459805061144
+https://x.com/R0boPay/status/2108523676870250990

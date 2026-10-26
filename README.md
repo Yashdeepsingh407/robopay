@@ -16,6 +16,10 @@ Static multi-page site for [robo-pay.xyz](https://robo-pay.xyz): home, how it wo
 
 Create `src/posts/YYYY-MM-DD-slug.html` with a front-matter block (`slug`, `title`, `description`, `date`, `image`, `image_alt`, optional `figure`, `figure_alt`, `figure_caption`) followed by the article HTML, then run `python3 build.py`. Put the 1200x630 cover under `assets/blog/`.
 
+## Update the posts from X
+
+The "Follow us on X" block on the home page shows the posts listed in `src/data/x-posts.txt`. To show a new post, add its link there and run `python3 build.py --refresh-x`. That fetches the text, date and preview image (via the fxtwitter API), stores them in `src/data/x-posts.json` and `assets/x/`, and rebuilds. The three newest posts are shown. A plain `python3 build.py` needs no network.
+
 ## Deploy
 
 GitHub Pages: Settings > Pages > Deploy from branch > main / root. The `CNAME` file holds the custom domain.
