@@ -6,7 +6,7 @@
   const ease = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  const C = { concrete: css('--color-concrete'), paper: css('--color-paper'), ink: css('--color-ink'), signal: css('--color-signal'), paid: css('--color-paid') };
+  const C = { bg: css('--color-bg'), surface: css('--color-surface'), surface2: css('--color-surface-2'), text: css('--color-text'), accent: css('--color-accent'), accentInk: css('--color-accent-ink'), violet: css('--color-violet'), paid: css('--color-paid'), coin: css('--color-coin'), white: css('--color-white'), road: '#03051a' };
 
   document.documentElement.classList.add('js');
 
@@ -31,11 +31,13 @@
 
   function build() {
     blocks = [];
-    [[.24, '#d6d8d4'], [.38, '#d0d2ce']].forEach(([hh, col], li) => {
+    [[.24, '#0d1438'], [.38, '#131b47']].forEach(([hh, col], li) => {
       let x = -30;
       while (x < W + 60) {
         const w = 46 + rnd() * 80, h = H * (hh * .45 + rnd() * hh * .55);
-        blocks.push({ x, w, h, col, li });
+        const lit = [];
+        if (li) for (let wx = 10; wx < w - 12; wx += 18) for (let wy = 12; wy < h - 8; wy += 26) lit.push([wx, wy, rnd() > .78]);
+        blocks.push({ x, w, h, col, li, lit });
         x += w + (li ? 6 : 14);
       }
     });
@@ -67,25 +69,25 @@
     const mob = W < 700;
     const horizon = H * (mob ? .8 : .76);
 
-    // skyline: two flat layers, windows cut out of the facade
+    // skyline: two flat layers; a few windows are lit
     blocks.forEach(b => {
       const y = horizon - b.h;
       ctx.fillStyle = b.col; ctx.fillRect(b.x, y, b.w, b.h + 2);
-      if (b.li) {
-        ctx.fillStyle = C.concrete;
-        for (let wx = 10; wx < b.w - 12; wx += 18) for (let wy = 12; wy < b.h - 8; wy += 26) ctx.fillRect(b.x + wx, y + wy, 8, 12);
-      }
+      b.lit.forEach(([wx, wy, on]) => {
+        const f = mob ? .3 : clamp((b.x + wx - W * .45) / (W * .35), .18, 1);   // keep windows quiet behind the text
+        ctx.fillStyle = on ? `rgba(255,214,140,${.7 * f})` : `rgba(152,170,255,${.1 * f})`; ctx.fillRect(b.x + wx, y + wy, 8, 12);
+      });
     });
-    ctx.fillStyle = '#dcdedb'; ctx.fillRect(0, horizon, W, H - horizon);
-    ctx.fillStyle = C.ink; ctx.fillRect(0, horizon, W, 2);
+    ctx.fillStyle = C.surface; ctx.fillRect(0, horizon, W, H - horizon);
+    ctx.fillStyle = 'rgba(152,170,255,.28)'; ctx.fillRect(0, horizon, W, 1.5);
 
     // road
     const p0 = { x: -W * .05, y: H * .97 }, p1 = { x: W * .3, y: H * (mob ? .88 : .82) }, p2 = { x: W * .58, y: H }, p3 = { x: W * (mob ? .78 : .84), y: horizon + H * .04 };
     ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
-    ctx.strokeStyle = C.ink; ctx.lineWidth = mob ? 22 : 30; ctx.stroke();
+    ctx.strokeStyle = C.road; ctx.lineWidth = mob ? 22 : 30; ctx.stroke();
     ctx.setLineDash([16, 18]); ctx.lineDashOffset = reduce ? 0 : -t * 22;
-    ctx.strokeStyle = C.signal; ctx.lineWidth = 3; ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = C.accent; ctx.lineWidth = 3; ctx.stroke(); ctx.setLineDash([]);
 
     // timeline: drive 6.4s, scan .7, pay 1.8, rest 1.1
     const D = 6.4, S = .7, B = 1.8, R = 1.1, L = D + S + B + R;
@@ -96,10 +98,10 @@
     // house with the QR box
     const hs = mob ? .75 : 1, hx = p3.x + 16 * hs, hy = p3.y - 8;
     ctx.save(); ctx.translate(hx, hy); ctx.scale(hs, hs);
-    ctx.fillStyle = C.paper; ctx.strokeStyle = C.ink; ctx.lineWidth = 3;
+    ctx.fillStyle = C.surface2; ctx.strokeStyle = '#aeb9f0'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.moveTo(-36, 0); ctx.lineTo(-36, -44); ctx.lineTo(0, -72); ctx.lineTo(36, -44); ctx.lineTo(36, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = paidNow ? C.paid : C.paper; ctx.fillRect(-11, -30, 22, 22); ctx.strokeRect(-11, -30, 22, 22);
-    ctx.fillStyle = paidNow ? C.paper : C.ink;
+    ctx.fillStyle = paidNow ? C.paid : C.white; ctx.fillRect(-11, -30, 22, 22);
+    ctx.fillStyle = paidNow ? '#04120c' : C.accentInk;
     ctx.fillRect(-8, -27, 6, 6); ctx.fillRect(2, -27, 6, 6); ctx.fillRect(-8, -17, 6, 6); ctx.fillRect(3, -16, 4, 4);
     ctx.restore();
 
@@ -109,23 +111,22 @@
     const ang = Math.atan2(cq.y - cp.y, cq.x - cp.x);
     const cs = mob ? 1.1 : 1.75;
     ctx.save(); ctx.translate(cp.x, cp.y - 16 * cs); ctx.rotate(ang); ctx.scale(cs, cs);
-    ctx.lineWidth = 2.2; ctx.strokeStyle = C.ink;
-    ctx.fillStyle = C.paper; ctx.beginPath(); ctx.rect(-8, -25, 15, 9); ctx.fill(); ctx.stroke();           // parcel on the roof
-    ctx.fillStyle = C.paper; ctx.beginPath(); ctx.moveTo(-10, -8); ctx.lineTo(-5, -17); ctx.lineTo(8, -17); ctx.lineTo(13, -8); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = C.signal; ctx.beginPath(); ctx.roundRect(-24, -8, 48, 16, 5); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = C.ink; ctx.strokeStyle = C.paper;
+    ctx.fillStyle = C.violet; ctx.beginPath(); ctx.roundRect(-8, -25, 15, 9, 2); ctx.fill();   // parcel on the roof
+    ctx.fillStyle = C.accent; ctx.beginPath(); ctx.moveTo(-10, -8); ctx.lineTo(-5, -17); ctx.lineTo(8, -17); ctx.lineTo(13, -8); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = C.white; ctx.beginPath(); ctx.roundRect(-24, -8, 48, 16, 5); ctx.fill();
+    ctx.fillStyle = C.road; ctx.strokeStyle = C.white; ctx.lineWidth = 2;
     [-14, 14].forEach(wx => { ctx.beginPath(); ctx.arc(wx, 9, 5.5, 0, 7); ctx.fill(); ctx.stroke(); });
     ctx.restore();
 
     // price tag on the car: locked, then paid
     const ly = cp.y - 78 * (cs / 1.4) - 8;
     const lab = paidNow ? 'Paid' : '0.2 SOL locked';
-    ctx.font = '700 14px Archivo, sans-serif';
+    ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
     const tw = ctx.measureText(lab).width + 26;
     const lx = clamp(cp.x, tw / 2 + 10, W - tw / 2 - 10);
-    ctx.fillStyle = paidNow ? C.paid : C.paper; ctx.strokeStyle = paidNow ? C.paid : C.ink; ctx.lineWidth = 2;
+    ctx.fillStyle = paidNow ? C.paid : C.surface2; ctx.strokeStyle = paidNow ? C.paid : C.accent; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.roundRect(lx - tw / 2, ly - 15, tw, 30, 4); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = paidNow ? C.paper : C.ink; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = paidNow ? '#04120c' : C.text; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(lab, lx, ly + 1);
 
     // payout: three coins hop from the tag to the house
@@ -139,7 +140,7 @@
       if (u < 0) continue;
       const x = lerp(c.x0, c.x1, u), y = lerp(c.y0, c.y1, u) - Math.sin(u * Math.PI) * 60;
       ctx.globalAlpha = u > .85 ? (1 - u) / .15 : 1;
-      ctx.fillStyle = C.signal; ctx.strokeStyle = C.ink; ctx.lineWidth = 2;
+      ctx.fillStyle = C.coin; ctx.strokeStyle = C.road; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(x, y, 6, 0, 7); ctx.fill(); ctx.stroke();
     }
     ctx.globalAlpha = 1;
