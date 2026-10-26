@@ -8,7 +8,7 @@ Static multi-page site for [robo-pay.xyz](https://robo-pay.xyz): home, how it wo
 - `style.css`: one flat layer. Colours (taken from the logo: deep navy, violet, sky blue), type and spacing come from `tokens.css`.
 - `design/tokens.json`: single source for the design tokens. After editing, run `python3 design/build-tokens.py` to regenerate `tokens.css`.
 - `main.js`: hero scene (canvas), scroll-driven story, bars, menu.
-- `assets/logos/`: partner logos in their original colours (SVG where the brand supplies one). They sit on white tiles because several are dark.
+- `assets/logos/`: partner logos in their original colours (SVG where the brand supplies one). Staex, HTW, BHT and the Solana wordmark are white versions so they read on the dark theme; the other logos keep their brand colours. They sit on dark chips.
 - `assets/fonts/plus-jakarta-sans.woff2`: Plus Jakarta Sans variable font (SIL OFL 1.1), self-hosted.
 - `assets/robopay-logo.webp`: the RoboPay logo, same as the profile picture on X (@R0boPay). Icons and the share image are made from it.
 
