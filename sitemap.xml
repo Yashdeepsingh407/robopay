@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://robo-pay.xyz/</loc><lastmod>2026-10-26</lastmod><image:image><image:loc>https://robo-pay.xyz/assets/og.jpg</image:loc></image:image></url>
-  <url><loc>https://robo-pay.xyz/how-it-works/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://robo-pay.xyz/research/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://robo-pay.xyz/team/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://robo-pay.xyz/faq/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://robo-pay.xyz/blog/</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://robo-pay.xyz/</loc><lastmod>2026-10-27</lastmod><image:image><image:loc>https://robo-pay.xyz/assets/og.jpg</image:loc></image:image></url>
+  <url><loc>https://robo-pay.xyz/how-it-works/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://robo-pay.xyz/research/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://robo-pay.xyz/team/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://robo-pay.xyz/faq/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://robo-pay.xyz/blog/</loc><lastmod>2026-10-27</lastmod></url>
   <url><loc>https://robo-pay.xyz/blog/peaq-track-winner/</loc><lastmod>2026-10-26</lastmod><image:image><image:loc>https://robo-pay.xyz/assets/blog/peaq-track-winner-cover.jpg</image:loc></image:image></url>
   <url><loc>https://robo-pay.xyz/blog/first-team-meeting/</loc><lastmod>2026-07-10</lastmod><image:image><image:loc>https://robo-pay.xyz/assets/blog/first-team-meeting-cover.jpg</image:loc></image:image></url>
 </urlset>

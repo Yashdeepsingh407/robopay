@@ -244,8 +244,9 @@ main > section:first-child:not(.hero):not(.story) { padding-top: calc(var(--spac
 .flow p { color: var(--color-text-2); margin-top: .3rem; max-width: 34rem; }
 .faces { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.5rem; }
 .faces li { display: grid; gap: .15rem; justify-items: start; align-content: start; }
-.faces img { width: min(100%, 200px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: 50% 18%; margin-bottom: .9rem; background: var(--color-surface-2); border: 2px solid var(--color-line); }
+.faces li > img { width: min(100%, 200px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: 50% 18%; margin-bottom: .9rem; background: var(--color-surface-2); border: 2px solid var(--color-line); }
 .faces b { font-weight: 700; font-size: 1.1rem; letter-spacing: -.02em; }
+.faces .orgs { margin: 0; padding: .9rem 0 0; }
 .faces span { color: var(--color-text-2); font-size: .9rem; }
 
 /* ---------- powered by / partners ---------- */
@@ -340,7 +341,7 @@ main > section:first-child:not(.hero):not(.story) { padding-top: calc(var(--spac
   .pr-list li, .layers, .r-grid, .gap, .faq-grid, .links, .teaser-grid, .follow-grid, .partners-grid { grid-template-columns: 1fr; }
   .faces { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .x-card { grid-template-columns: 1fr; }
-  .faces img { width: min(100%, 160px); }
+  .faces li > img { width: min(100%, 160px); }
   .news-list, .post-list { grid-template-columns: 1fr; }
   .pr-list li { gap: .5rem; }
   .srow { grid-template-columns: 1fr; gap: 1rem; }
